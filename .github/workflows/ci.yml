@@ -10,11 +10,14 @@ jobs:
     strategy:
       matrix:
         target:
+          - tags: zhongruoyu/sandbox:latest,zhongruoyu/sandbox:ubuntu,zhongruoyu/sandbox:jammy
+            file: jammy.Dockerfile
+            platforms: linux/amd64,linux/arm64
           - tags: zhongruoyu/sandbox:focal
             file: focal.Dockerfile
             platforms: linux/amd64,linux/arm64
-          - tags: zhongruoyu/sandbox:jammy,zhongruoyu/sandbox:latest
-            file: jammy.Dockerfile
+          - tags: zhongruoyu/sandbox:fedora
+            file: fedora.Dockerfile
             platforms: linux/amd64,linux/arm64
     runs-on: ubuntu-latest
     steps:
