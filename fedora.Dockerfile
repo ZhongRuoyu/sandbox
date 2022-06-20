@@ -6,9 +6,10 @@ RUN dnf install -y \
         @c-development \
         git \
         clang clang-tools-extra \
+        cmake \
         java-latest-openjdk-devel \
         golang \
         nodejs npm \
         python3 python3-pip \
-        cmake htop man-db nano tmux vim wget && \
+        bind-utils htop iputils man-db nano tmux traceroute vim wget && \
     dnf clean all

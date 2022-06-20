@@ -10,11 +10,13 @@ RUN apt-get update && \
         libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev \
         libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime \
         llvm python3-clang \
+        cmake \
         default-jdk \
         golang \
         nodejs npm \
         python3 python3-pip \
-        cmake htop man-db nano tmux vim wget && \
+        dnsutils htop iputils-ping iputils-tracepath man-db nano tmux \
+        traceroute vim wget && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
