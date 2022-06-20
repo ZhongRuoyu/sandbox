@@ -13,3 +13,5 @@ RUN dnf install -y \
         python3 python3-pip \
         bind-utils htop iputils man-db nano tmux traceroute vim wget && \
     dnf clean all
+
+WORKDIR /root
