@@ -15,8 +15,8 @@ RUN apt-get update && \
         golang \
         nodejs npm \
         python3 python3-pip \
-        dnsutils htop iputils-ping iputils-tracepath man-db nano tmux \
-        traceroute vim wget && \
+        dnsutils iputils-ping iputils-tracepath net-tools traceroute \
+        htop man-db nano tmux vim wget && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root

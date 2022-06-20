@@ -11,7 +11,8 @@ RUN dnf install -y \
         golang \
         nodejs npm \
         python3 python3-pip \
-        bind-utils htop iputils man-db nano tmux traceroute vim wget && \
+        bind-utils iputils net-tools traceroute \
+        htop man-db nano tmux vim wget && \
     dnf clean all
 
 WORKDIR /root
