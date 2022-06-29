@@ -1,6 +1,7 @@
 FROM fedora:latest
 
-RUN dnf install -y \
+RUN dnf upgrade -y && \
+    dnf install -y \
         @server-product-environment \
         @development-tools \
         @c-development \
@@ -13,6 +14,7 @@ RUN dnf install -y \
         python3 python3-pip \
         bind-utils iputils net-tools traceroute \
         htop man-db nano tmux vim wget && \
+    dnf autoremove -y && \
     dnf clean all
 
 WORKDIR /root

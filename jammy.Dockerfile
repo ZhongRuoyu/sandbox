@@ -2,6 +2,7 @@ FROM ubuntu:jammy
 
 RUN apt-get update && \
     yes | unminimize && \
+    apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
         ubuntu-server \
         build-essential \
@@ -17,6 +18,7 @@ RUN apt-get update && \
         python3 python3-pip \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute \
         htop man-db nano tmux vim wget && \
+    apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
