@@ -8,6 +8,7 @@ RUN dnf upgrade -y && \
         git \
         clang clang-tools-extra \
         cmake gdb \
+        cargo clippy rust rustfmt rust-gdb \
         java-latest-openjdk-devel \
         golang \
         nodejs npm \

@@ -12,6 +12,7 @@ RUN apt-get update && \
         libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime \
         llvm python3-clang \
         cmake gdb \
+        rust-all \
         default-jdk \
         golang \
         nodejs npm \
