@@ -7,7 +7,7 @@ RUN dnf upgrade -y && \
         @c-development \
         git \
         clang clang-tools-extra \
-        cmake \
+        cmake gdb \
         java-latest-openjdk-devel \
         golang \
         nodejs npm \
