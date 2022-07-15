@@ -14,7 +14,7 @@ RUN dnf upgrade -y && \
         nodejs npm \
         python3 python3-pip \
         bind-utils iputils net-tools traceroute \
-        htop man-db nano tmux vim wget && \
+        curl htop man-db nano tmux vim wget && \
     dnf autoremove -y && \
     dnf clean all
 
