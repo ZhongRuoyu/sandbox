@@ -18,7 +18,7 @@ RUN apt-get update && \
         nodejs npm \
         python3 python3-pip \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute \
-        curl htop man-db nano tmux vim wget && \
+        curl gnupg htop man-db nano tmux vim wget && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
