@@ -20,6 +20,6 @@ RUN apt-get update && \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute \
         curl gnupg htop man-db nano tmux vim wget && \
     apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean
 
 WORKDIR /root
