@@ -8,7 +8,10 @@ RUN sed -i '/^tsflags=.*$/d' /etc/dnf/dnf.conf && \
         @development-tools \
         @c-development \
         git \
-        clang clang-tools-extra \
+        clang clang-devel clang-libs clang-tools-extra libcxx libcxx-devel \
+        libcxx-static libcxxabi libcxxabi-devel libcxxabi-static libomp \
+        libomp-devel lld lldb lldb-devel llvm llvm-devel llvm-libs \
+        llvm-static python3-clang \
         cmake gdb \
         cargo clippy rust rustfmt rust-gdb \
         java-latest-openjdk-devel \
