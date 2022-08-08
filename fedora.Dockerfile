@@ -20,7 +20,7 @@ RUN \
         nodejs npm \
         python3 python3-pip \
         bind-utils iputils net-tools traceroute \
-        curl gnupg htop nano tmux vim wget && \
+        curl gnupg htop nano sudo tmux vim wget && \
     dnf autoremove -y && \
     dnf clean all
 
