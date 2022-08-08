@@ -19,6 +19,7 @@ RUN \
         golang \
         nodejs npm \
         python3 python3-pip \
+        apache2-utils \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute \
         curl gnupg htop nano sudo tmux vim wget && \
     apt-get autoremove -y && \
