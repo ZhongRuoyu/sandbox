@@ -22,6 +22,6 @@ RUN \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute \
         curl gnupg htop nano tmux vim wget && \
     apt-get autoremove -y && \
-    apt-get clean
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
