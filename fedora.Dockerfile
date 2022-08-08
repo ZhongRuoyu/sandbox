@@ -21,7 +21,7 @@ RUN \
         python3 python3-pip \
         httpd-tools \
         bind-utils iputils net-tools traceroute whois \
-        curl gnupg htop nano sudo tmux vim wget && \
+        curl file gnupg htop nano sudo tmux vim wget && \
     dnf autoremove -y && \
     dnf clean all
 
