@@ -1,6 +1,7 @@
 FROM fedora:latest
 
-RUN sed -i '/^tsflags=.*$/d' /etc/dnf/dnf.conf && \
+RUN \
+    sed -i '/^tsflags=.*$/d' /etc/dnf/dnf.conf && \
     dnf upgrade -y && \
     dnf install -y \
         @server-product-environment \
