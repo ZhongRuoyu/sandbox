@@ -20,7 +20,7 @@ RUN \
         nodejs npm \
         python3 python3-pip \
         apache2-utils \
-        dnsutils iputils-ping iputils-tracepath net-tools traceroute \
+        dnsutils iputils-ping iputils-tracepath net-tools traceroute whois \
         curl gnupg htop nano sudo tmux vim wget && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
