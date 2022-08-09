@@ -21,9 +21,10 @@ RUN \
         python3 python3-pip \
         gnupg openssl \
         openssh openssh-clients openssh-server \
+        ca-certificates curl wget \
         httpd-tools \
         bind-utils iputils net-tools traceroute whois \
-        curl file gawk htop nano sudo tmux vim wget zsh && \
+        file gawk htop nano sudo tmux vim zsh && \
     dnf autoremove -y && \
     dnf clean all
 
