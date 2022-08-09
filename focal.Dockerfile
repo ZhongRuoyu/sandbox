@@ -19,6 +19,7 @@ RUN \
         golang \
         nodejs npm \
         python3 python3-pip \
+        openssh-client openssh-server \
         apache2-utils \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute whois \
         curl file gnupg htop nano sudo tmux vim wget && \
