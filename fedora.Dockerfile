@@ -23,7 +23,7 @@ RUN \
         openssh openssh-clients openssh-server \
         httpd-tools \
         bind-utils iputils net-tools traceroute whois \
-        curl file gawk htop nano sudo tmux vim wget && \
+        curl file gawk htop nano sudo tmux vim wget zsh && \
     dnf autoremove -y && \
     dnf clean all
 
