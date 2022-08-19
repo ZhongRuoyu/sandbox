@@ -13,13 +13,13 @@ jobs:
       matrix:
         target:
           - tags: zhongruoyu/sandbox:latest,zhongruoyu/sandbox:ubuntu,zhongruoyu/sandbox:jammy
-            file: jammy.Dockerfile
+            file: Dockerfile.jammy
             platforms: linux/amd64,linux/arm64
           - tags: zhongruoyu/sandbox:focal
-            file: focal.Dockerfile
+            file: Dockerfile.focal
             platforms: linux/amd64,linux/arm64
           - tags: zhongruoyu/sandbox:fedora
-            file: fedora.Dockerfile
+            file: Dockerfile.fedora
             platforms: linux/amd64,linux/arm64
     runs-on: ubuntu-latest
     steps:
