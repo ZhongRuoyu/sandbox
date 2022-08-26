@@ -11,7 +11,7 @@ RUN \
         git-all \
         gcc gcc-c++ gdb make \
         binutils \
-        cmake \
+        ccache cmake \
         clang clang-devel clang-libs clang-tools-extra libcxx libcxx-devel \
             libcxx-static libcxxabi libcxxabi-devel libcxxabi-static libomp \
             libomp-devel lld lldb lldb-devel llvm llvm-devel llvm-libs \
