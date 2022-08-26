@@ -10,6 +10,7 @@ RUN \
         @c-development \
         git-all \
         gcc gcc-c++ gdb make \
+        binutils \
         cmake \
         clang clang-devel clang-libs clang-tools-extra libcxx libcxx-devel \
             libcxx-static libcxxabi libcxxabi-devel libcxxabi-static libomp \
