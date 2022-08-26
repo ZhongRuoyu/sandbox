@@ -13,7 +13,8 @@ RUN \
             libcxx-static libcxxabi libcxxabi-devel libcxxabi-static libomp \
             libomp-devel lld lldb lldb-devel llvm llvm-devel llvm-libs \
             llvm-static python3-clang \
-        cmake gdb \
+        gdb \
+        cmake \
         cargo clippy rust rustfmt rust-gdb \
         java-latest-openjdk-devel \
         golang \
@@ -24,8 +25,9 @@ RUN \
         ca-certificates curl wget \
         httpd-tools \
         bind-utils iputils net-tools traceroute whois \
-        unzip zip \
-        file gawk htop nano sudo tmux vim zsh && \
+        file gawk unzip zip \
+        nano vim \
+        htop sudo tmux zsh && \
     dnf autoremove -y && \
     dnf clean all
 

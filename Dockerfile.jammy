@@ -13,7 +13,8 @@ RUN \
             libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev \
             libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev \
             llvm-runtime llvm python3-clang \
-        cmake gdb \
+        gdb \
+        cmake \
         rust-all \
         default-jdk \
         golang \
@@ -24,8 +25,9 @@ RUN \
         ca-certificates curl wget \
         apache2-utils \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute whois \
-        unzip zip \
-        file gawk htop nano sudo tmux vim zsh && \
+        file gawk unzip zip \
+        nano vim \
+        htop sudo tmux zsh && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
