@@ -24,6 +24,7 @@ RUN \
         ca-certificates curl wget \
         httpd-tools \
         bind-utils iputils net-tools traceroute whois \
+        unzip zip \
         file gawk htop nano sudo tmux vim zsh && \
     dnf autoremove -y && \
     dnf clean all
