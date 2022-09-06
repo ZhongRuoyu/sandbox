@@ -9,6 +9,7 @@ RUN <<-"EOF"
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
         ubuntu-server \
         man-db manpages manpages-dev \
+        info texinfo \
         build-essential \
         git-all \
         gcc g++ gdb make \
