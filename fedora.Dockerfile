@@ -32,7 +32,7 @@ RUN <<-"EOF"
         httpd-tools \
         bind-utils iputils net-tools traceroute whois \
         file gawk unzip zip \
-        nano vim \
+        emacs nano vim \
         htop sudo tmux zsh
     dnf autoremove -y
     dnf clean all

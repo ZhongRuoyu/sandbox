@@ -26,7 +26,7 @@ RUN <<-"EOF"
         apache \
         bind iputils net-tools traceroute whois \
         file gawk unzip zip \
-        nano vim \
+        emacs nano vim \
         htop sudo tmux zsh
     (pacman -Qdtq | pacman -Rs -) || true
     pacman -Scc
