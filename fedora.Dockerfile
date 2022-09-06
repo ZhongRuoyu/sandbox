@@ -13,7 +13,7 @@ RUN <<-"EOF"
         info texinfo \
         @development-tools \
         @c-development \
-        git-all \
+        git \
         gcc gcc-c++ gdb make \
         binutils \
         ccache cmake \

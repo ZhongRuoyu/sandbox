@@ -11,7 +11,7 @@ RUN <<-"EOF"
         man-db manpages manpages-dev \
         info texinfo \
         build-essential \
-        git-all \
+        git \
         gcc g++ gdb make \
         binutils \
         ccache cmake \
