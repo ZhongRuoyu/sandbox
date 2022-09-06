@@ -8,7 +8,7 @@ RUN <<-"EOF"
     apt-get update
     apt-get upgrade -y
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        man-db manpages manpages-dev \
+        manpages manpages-dev man-db \
         info texinfo \
         build-essential \
         git \
