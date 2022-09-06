@@ -1,4 +1,4 @@
-name: ci
+name: docker
 
 on:
   workflow_dispatch:
@@ -13,26 +13,32 @@ jobs:
     strategy:
       matrix:
         target:
-          - tags: |
+          - build-args: |
+              IMAGE_TAG=jammy
+            file: ubuntu.Dockerfile
+            platforms: |
+              linux/amd64
+              linux/arm64
+            tags: |
               zhongruoyu/sandbox:latest
               zhongruoyu/sandbox:ubuntu
               zhongruoyu/sandbox:jammy
-            file: Dockerfile.jammy
+          - build-args: |
+              IMAGE_TAG=focal
+            file: ubuntu.Dockerfile
             platforms: |
               linux/amd64
               linux/arm64
-          - tags: |
+            tags: |
               zhongruoyu/sandbox:focal
-            file: Dockerfile.focal
+          - build-args: |
+              IMAGE_TAG=latest
+            file: fedora.Dockerfile
             platforms: |
               linux/amd64
               linux/arm64
-          - tags: |
+            tags: |
               zhongruoyu/sandbox:fedora
-            file: Dockerfile.fedora
-            platforms: |
-              linux/amd64
-              linux/arm64
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -47,6 +53,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v3
         with:
+          build-args: ${{ matrix.target.build-args }}
           file: ${{ matrix.target.file }}
           platforms: ${{ matrix.target.platforms }}
           push: true

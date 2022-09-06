@@ -1,6 +1,7 @@
 # syntax = docker/dockerfile:1
 
-FROM fedora:latest
+ARG IMAGE_TAG=latest
+FROM fedora:$IMAGE_TAG
 
 RUN <<-"EOF"
     sed -i '/^tsflags=.*$/d' /etc/dnf/dnf.conf

@@ -1,6 +1,7 @@
 # syntax = docker/dockerfile:1
 
-FROM ubuntu:jammy
+ARG IMAGE_TAG=latest
+FROM ubuntu:$IMAGE_TAG
 
 RUN <<-"EOF"
     apt-get update
