@@ -4,6 +4,7 @@ ARG IMAGE_TAG=latest
 FROM debian:$IMAGE_TAG
 
 RUN <<-"EOF"
+    set -e
     apt-get update
     apt-get upgrade -y
     DEBIAN_FRONTEND=noninteractive apt-get install -y \

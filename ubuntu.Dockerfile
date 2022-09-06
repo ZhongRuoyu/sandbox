@@ -4,6 +4,7 @@ ARG IMAGE_TAG=latest
 FROM ubuntu:$IMAGE_TAG
 
 RUN <<-"EOF"
+    set -e
     apt-get update
     yes | unminimize
     apt-get upgrade -y

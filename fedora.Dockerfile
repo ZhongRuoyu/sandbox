@@ -4,6 +4,7 @@ ARG IMAGE_TAG=latest
 FROM fedora:$IMAGE_TAG
 
 RUN <<-"EOF"
+    set -e
     sed -i '/^tsflags=.*$/d' /etc/dnf/dnf.conf
     dnf upgrade -y
     dnf install -y \

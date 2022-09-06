@@ -4,6 +4,7 @@ ARG IMAGE_TAG=latest
 FROM archlinux:$IMAGE_TAG
 
 RUN <<-"EOF"
+    set -e
     sed -i '/^NoExtract[[:space:]]*=.*$/d' /etc/pacman.conf
     pacman -Syu --needed --noconfirm \
         man-db man-pages \
