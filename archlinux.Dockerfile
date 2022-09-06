@@ -14,7 +14,7 @@ RUN <<-"EOF"
         gcc gdb make \
         binutils \
         ccache cmake \
-        clang libc++ libc++abi openmp lld lldb llvm llvm-libs \
+        clang libc++ libc++abi lld lldb llvm llvm-libs openmp \
         rust \
         jdk-openjdk \
         go \
