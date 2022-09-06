@@ -20,7 +20,7 @@ RUN <<-"EOF"
             libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev \
             libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev \
             llvm-runtime llvm python3-clang \
-        rust-all \
+        cargo rustc rustfmt rust-clippy rust-gdb rust-lldb \
         default-jdk \
         golang \
         nodejs npm \

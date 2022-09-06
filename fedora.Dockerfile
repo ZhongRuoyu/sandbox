@@ -20,7 +20,7 @@ RUN <<-"EOF"
             libcxx-static libcxxabi libcxxabi-devel libcxxabi-static libomp \
             libomp-devel lld lldb lldb-devel llvm llvm-devel llvm-libs \
             llvm-static python3-clang \
-        cargo clippy rust rustfmt rust-gdb \
+        cargo clippy rust rustfmt rust-gdb rust-lldb \
         java-latest-openjdk-devel \
         golang \
         nodejs npm \
