@@ -32,6 +32,23 @@ jobs:
             tags: |
               zhongruoyu/sandbox:focal
           - build-args: |
+              IMAGE_TAG=bullseye
+            file: debian.Dockerfile
+            platforms: |
+              linux/amd64
+              linux/arm64
+            tags: |
+              zhongruoyu/sandbox:debian
+              zhongruoyu/sandbox:bullseye
+          - build-args: |
+              IMAGE_TAG=buster
+            file: debian.Dockerfile
+            platforms: |
+              linux/amd64
+              linux/arm64
+            tags: |
+              zhongruoyu/sandbox:buster
+          - build-args: |
               IMAGE_TAG=latest
             file: fedora.Dockerfile
             platforms: |
