@@ -57,6 +57,14 @@ jobs:
               zhongruoyu/sandbox:archlinux
           - build-args: |
               IMAGE_TAG=latest
+            file: alpine.Dockerfile
+            platforms: |
+              linux/amd64
+              linux/arm64
+            tags: |
+              zhongruoyu/sandbox:alpine
+          - build-args: |
+              IMAGE_TAG=latest
             file: clearlinux.Dockerfile
             platforms: |
               linux/amd64
