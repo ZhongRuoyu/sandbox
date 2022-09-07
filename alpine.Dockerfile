@@ -7,6 +7,7 @@ RUN <<-"EOF"
     set -e
     apk upgrade --no-cache
     apk add --no-cache \
+        bash coreutils \
         man-db man-pages man-pages-posix \
         texinfo \
         alpine-sdk \
