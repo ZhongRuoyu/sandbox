@@ -89,3 +89,19 @@ jobs:
           platforms: ${{ matrix.target.platforms }}
           push: true
           tags: ${{ matrix.target.tags }}
+  workflow-dispatch:
+    needs:
+      - docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger ZhongRuoyu/workbench build
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: "ZhongRuoyu",
+              repo: "workbench",
+              workflow_id: "docker.yml",
+              ref: "main",
+            });
