@@ -11,6 +11,7 @@ on:
 jobs:
   docker:
     strategy:
+      fail-fast: false
       matrix:
         target:
           - build-args: |
