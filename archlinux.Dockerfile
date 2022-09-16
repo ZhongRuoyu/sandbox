@@ -13,7 +13,7 @@ RUN <<-"EOF"
         gcc \
         autoconf automake binutils gdb git libtool make \
         ccache cmake \
-        clang libc++ libc++abi lld lldb llvm llvm-libs openmp \
+        clang libc++ libc++abi lld lldb llvm llvm-libs \
         rust \
         jdk-openjdk \
         go \

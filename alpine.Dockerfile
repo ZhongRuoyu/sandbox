@@ -16,7 +16,7 @@ RUN <<-"EOF"
         ccache cmake \
         clang clang-analyzer clang-dev clang-extra-tools clang-libs \
             clang-static lld lld-dev lld-static lldb lldb-dev llvm13 \
-            llvm13-dev llvm13-libs llvm13-static openmp openmp-dev py3-clang \
+            llvm13-dev llvm13-libs llvm13-static py3-clang \
         cargo rust rustfmt rust-clippy rust-gdb \
         openjdk17 \
         go \
