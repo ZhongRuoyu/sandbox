@@ -12,7 +12,7 @@ RUN <<-"EOF"
         texinfo \
         alpine-sdk \
         gcc g++ \
-        binutils gdb git make \
+        autoconf automake binutils gdb git libtool make \
         ccache cmake \
         clang clang-analyzer clang-dev clang-extra-tools clang-libs \
             clang-static lld lld-dev lld-static lldb lldb-dev llvm13 \

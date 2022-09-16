@@ -14,7 +14,7 @@ RUN <<-"EOF"
         @development-tools \
         @c-development \
         gcc gcc-c++ \
-        binutils gdb git make \
+        autoconf automake binutils gdb git libtool make \
         ccache cmake \
         clang clang-devel clang-libs clang-tools-extra libcxx libcxx-devel \
             libcxx-static libcxxabi libcxxabi-devel libcxxabi-static libomp \

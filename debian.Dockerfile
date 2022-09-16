@@ -12,7 +12,7 @@ RUN <<-"EOF"
         info texinfo \
         build-essential \
         gcc g++ \
-        binutils gdb git make \
+        autoconf automake binutils gdb git libtool make \
         ccache cmake \
         clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 \
             libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev \
