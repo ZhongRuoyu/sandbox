@@ -14,72 +14,38 @@ jobs:
       fail-fast: false
       matrix:
         target:
-          - build-args: |
-              IMAGE_TAG=jammy
+          - tags: zhongruoyu/sandbox:latest,zhongruoyu/sandbox:ubuntu,zhongruoyu/sandbox:jammy
+            platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            platforms: |
-              linux/amd64
-              linux/arm64
-            tags: |
-              zhongruoyu/sandbox:latest
-              zhongruoyu/sandbox:ubuntu
-              zhongruoyu/sandbox:jammy
-          - build-args: |
-              IMAGE_TAG=focal
+            build-args: IMAGE_TAG=jammy
+          - tags: zhongruoyu/sandbox:focal
+            platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            platforms: |
-              linux/amd64
-              linux/arm64
-            tags: |
-              zhongruoyu/sandbox:focal
-          - build-args: |
-              IMAGE_TAG=bullseye
+            build-args: IMAGE_TAG=focal
+          - tags: zhongruoyu/sandbox:debian,zhongruoyu/sandbox:bullseye
+            platforms: linux/amd64,linux/arm64
             file: debian.Dockerfile
-            platforms: |
-              linux/amd64
-              linux/arm64
-            tags: |
-              zhongruoyu/sandbox:debian
-              zhongruoyu/sandbox:bullseye
-          - build-args: |
-              IMAGE_TAG=latest
+            build-args: IMAGE_TAG=bullseye
+          - tags: zhongruoyu/sandbox:fedora
+            platforms: linux/amd64,linux/arm64
             file: fedora.Dockerfile
-            platforms: |
-              linux/amd64
-              linux/arm64
-            tags: |
-              zhongruoyu/sandbox:fedora
-          - build-args: |
-              IMAGE_TAG=latest
+            build-args: IMAGE_TAG=latest
+          - tags: zhongruoyu/sandbox:archlinux
+            platforms: linux/amd64
             file: archlinux.Dockerfile
-            platforms: |
-              linux/amd64
-            tags: |
-              zhongruoyu/sandbox:archlinux
-          - build-args: |
-              IMAGE_TAG=9
+            build-args: IMAGE_TAG=latest
+          - tags: zhongruoyu/sandbox:rockylinux,zhongruoyu/sandbox:rockylinux-9
+            platforms: linux/amd64,linux/arm64
             file: rockylinux.Dockerfile
-            platforms: |
-              linux/amd64
-              linux/arm64
-            tags: |
-              zhongruoyu/sandbox:rockylinux
-              zhongruoyu/sandbox:rockylinux-9
-          - build-args: |
-              IMAGE_TAG=latest
+            build-args: IMAGE_TAG=9
+          - tags: zhongruoyu/sandbox:alpine
+            platforms: linux/amd64,linux/arm64
             file: alpine.Dockerfile
-            platforms: |
-              linux/amd64
-              linux/arm64
-            tags: |
-              zhongruoyu/sandbox:alpine
-          - build-args: |
-              IMAGE_TAG=latest
+            build-args: IMAGE_TAG=latest
+          - tags: zhongruoyu/sandbox:clearlinux
+            platforms: linux/amd64
             file: clearlinux.Dockerfile
-            platforms: |
-              linux/amd64
-            tags: |
-              zhongruoyu/sandbox:clearlinux
+            build-args: IMAGE_TAG=latest
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -94,24 +60,32 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v3
         with:
-          build-args: ${{ matrix.target.build-args }}
-          file: ${{ matrix.target.file }}
-          platforms: ${{ matrix.target.platforms }}
-          push: true
           tags: ${{ matrix.target.tags }}
+          platforms: ${{ matrix.target.platforms }}
+          file: ${{ matrix.target.file }}
+          build-args: ${{ matrix.target.build-args }}
+          push: true
   workflow-dispatch:
     needs:
       - docker
+    strategy:
+      fail-fast: false
+      matrix:
+        workflow:
+          - owner: ZhongRuoyu
+            repo: workbench
+            workflow_id: docker.yml
+            ref: main
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger ZhongRuoyu/workbench build
+      - name: Workflow dispatch
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           script: |
             github.rest.actions.createWorkflowDispatch({
-              owner: "ZhongRuoyu",
-              repo: "workbench",
-              workflow_id: "docker.yml",
-              ref: "main",
+              owner: "${{ matrix.workflow.owner }}",
+              repo: "${{ matrix.workflow.repo }}",
+              workflow_id: "${{ matrix.workflow.workflow_id }}",
+              ref: "${{ matrix.workflow.ref }}",
             });
