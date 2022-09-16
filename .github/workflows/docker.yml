@@ -56,6 +56,15 @@ jobs:
             tags: |
               zhongruoyu/sandbox:archlinux
           - build-args: |
+              IMAGE_TAG=9
+            file: rockylinux.Dockerfile
+            platforms: |
+              linux/amd64
+              linux/arm64
+            tags: |
+              zhongruoyu/sandbox:rockylinux
+              zhongruoyu/sandbox:rockylinux-9
+          - build-args: |
               IMAGE_TAG=latest
             file: alpine.Dockerfile
             platforms: |
