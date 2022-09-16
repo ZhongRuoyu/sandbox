@@ -27,7 +27,7 @@ RUN <<-"EOF"
         ca-certificates curl wget \
         apache2-utils \
         bind-tools iputils net-tools traceroute whois \
-        file gawk unzip zip \
+        file gawk tree unzip zip \
         emacs nano vim \
         htop sudo tmux zsh
 EOF

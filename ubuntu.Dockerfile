@@ -30,7 +30,7 @@ RUN <<-"EOF"
         ca-certificates curl wget \
         apache2-utils \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute whois \
-        file gawk unzip zip \
+        file gawk tree unzip zip \
         emacs nano vim \
         htop sudo tmux zsh
     apt-get autoremove -y
