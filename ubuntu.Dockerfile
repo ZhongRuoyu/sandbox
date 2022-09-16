@@ -13,9 +13,8 @@ RUN <<-"EOF"
         manpages manpages-dev man-db \
         info texinfo \
         build-essential \
-        git \
-        gcc g++ gdb make \
-        binutils \
+        gcc g++ \
+        binutils gdb git make \
         ccache cmake \
         clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 \
             libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev \

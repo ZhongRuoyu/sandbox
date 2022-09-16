@@ -13,9 +13,8 @@ RUN <<-"EOF"
         info texinfo \
         @development-tools \
         @c-development \
-        git \
-        gcc gcc-c++ gdb make \
-        binutils \
+        gcc gcc-c++ \
+        binutils gdb git make \
         ccache cmake \
         clang clang-devel clang-libs clang-tools-extra libcxx libcxx-devel \
             libcxx-static libcxxabi libcxxabi-devel libcxxabi-static libomp \

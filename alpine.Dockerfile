@@ -11,9 +11,8 @@ RUN <<-"EOF"
         man-db man-pages man-pages-posix \
         texinfo \
         alpine-sdk \
-        git \
-        gcc g++ gdb make \
-        binutils \
+        gcc g++ \
+        binutils gdb git make \
         ccache cmake \
         clang clang-analyzer clang-dev clang-extra-tools clang-libs \
             clang-static lld lld-dev lld-static lldb lldb-dev llvm13 \

@@ -10,9 +10,8 @@ RUN <<-"EOF"
         man-db man-pages \
         texinfo \
         base-devel \
-        git \
-        gcc gdb make \
-        binutils \
+        gcc \
+        binutils gdb git make \
         ccache cmake \
         clang libc++ libc++abi lld lldb llvm llvm-libs openmp \
         rust \
