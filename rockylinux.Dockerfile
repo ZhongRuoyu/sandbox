@@ -22,7 +22,7 @@ RUN <<-"EOF"
         java-latest-openjdk-devel \
         golang \
         nodejs npm \
-        python python3 python3-pip \
+        python3 python3-pip python-unversioned-command \
         gnupg openssl \
         openssh openssh-clients openssh-server \
         ca-certificates curl wget \
