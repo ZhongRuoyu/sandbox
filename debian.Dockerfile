@@ -22,7 +22,7 @@ RUN <<-"EOF"
         default-jdk \
         golang \
         nodejs npm \
-        python-is-python3 python3 python3-pip \
+        python3 python3-pip python-is-python3 \
         gnupg openssl \
         openssh-client openssh-server \
         ca-certificates curl wget \
