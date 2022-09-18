@@ -17,35 +17,35 @@ jobs:
           - tags: zhongruoyu/sandbox:latest,zhongruoyu/sandbox:ubuntu,zhongruoyu/sandbox:jammy
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            build-args: IMAGE_TAG=jammy
+            build-args: BASE_IMAGE_TAG=jammy
           - tags: zhongruoyu/sandbox:focal
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            build-args: IMAGE_TAG=focal
+            build-args: BASE_IMAGE_TAG=focal
           - tags: zhongruoyu/sandbox:debian,zhongruoyu/sandbox:bullseye
             platforms: linux/amd64,linux/arm64
             file: debian.Dockerfile
-            build-args: IMAGE_TAG=bullseye
+            build-args: BASE_IMAGE_TAG=bullseye
           - tags: zhongruoyu/sandbox:fedora
             platforms: linux/amd64,linux/arm64
             file: fedora.Dockerfile
-            build-args: IMAGE_TAG=latest
+            build-args: BASE_IMAGE_TAG=latest
           - tags: zhongruoyu/sandbox:rockylinux,zhongruoyu/sandbox:rockylinux-9
             platforms: linux/amd64,linux/arm64
             file: rockylinux.Dockerfile
-            build-args: IMAGE_TAG=9
+            build-args: BASE_IMAGE_TAG=9
           - tags: zhongruoyu/sandbox:archlinux
             platforms: linux/amd64
             file: archlinux.Dockerfile
-            build-args: IMAGE_TAG=latest
+            build-args: BASE_IMAGE_TAG=latest
           - tags: zhongruoyu/sandbox:clearlinux
             platforms: linux/amd64
             file: clearlinux.Dockerfile
-            build-args: IMAGE_TAG=latest
+            build-args: BASE_IMAGE_TAG=latest
           - tags: zhongruoyu/sandbox:alpine
             platforms: linux/amd64,linux/arm64
             file: alpine.Dockerfile
-            build-args: IMAGE_TAG=latest
+            build-args: BASE_IMAGE_TAG=latest
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU

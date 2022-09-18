@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
-ARG IMAGE_TAG=9
-FROM rockylinux:$IMAGE_TAG
+ARG BASE_IMAGE_TAG=9
+FROM rockylinux:${BASE_IMAGE_TAG}
 
 RUN <<-"EOF"
     set -e

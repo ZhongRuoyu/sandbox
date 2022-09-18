@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
-ARG IMAGE_TAG=latest
-FROM debian:$IMAGE_TAG
+ARG BASE_IMAGE_TAG=latest
+FROM debian:${BASE_IMAGE_TAG}
 
 RUN <<-"EOF"
     set -e

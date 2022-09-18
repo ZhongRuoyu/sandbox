@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
-ARG IMAGE_TAG=latest
-FROM archlinux:$IMAGE_TAG
+ARG BASE_IMAGE_TAG=latest
+FROM archlinux:${BASE_IMAGE_TAG}
 
 RUN <<-"EOF"
     set -e
