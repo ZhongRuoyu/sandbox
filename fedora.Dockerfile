@@ -17,8 +17,9 @@ RUN <<-"EOF"
         autoconf automake binutils gdb git libtool make \
         ccache cmake \
         clang clang-devel clang-libs clang-tools-extra libcxx libcxx-devel \
-            libcxx-static libcxxabi libcxxabi-devel libcxxabi-static lld lldb \
-            lldb-devel llvm llvm-devel llvm-libs llvm-static python3-clang \
+            libcxx-static libcxxabi libcxxabi-devel libcxxabi-static libomp \
+            libomp-devel lld lldb lldb-devel llvm llvm-devel llvm-libs \
+            llvm-static python3-clang \
         cargo clippy rust rustfmt rust-gdb \
         java-latest-openjdk-devel \
         golang \
