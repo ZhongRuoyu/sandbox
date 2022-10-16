@@ -19,6 +19,7 @@ RUN <<-"EOF"
         go \
         nodejs npm \
         python python-pip \
+        ruby \
         gnupg openssl \
         openssh \
         ca-certificates curl wget \

@@ -21,6 +21,7 @@ RUN <<-"EOF"
         go-basic \
         nodejs-basic \
         python3-basic \
+        ruby-basic \
         gnupg openssl \
         openssh-client openssh-server \
         curl wget \

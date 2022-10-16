@@ -23,6 +23,7 @@ RUN <<-"EOF"
         golang \
         nodejs npm \
         python3 python3-pip python-is-python3 \
+        ruby-full \
         gnupg openssl \
         openssh-client openssh-server \
         ca-certificates curl wget \

@@ -25,6 +25,7 @@ RUN <<-"EOF"
         golang \
         nodejs npm \
         python3 python3-pip python-unversioned-command \
+        ruby \
         gnupg openssl \
         openssh openssh-clients openssh-server \
         ca-certificates curl wget \
