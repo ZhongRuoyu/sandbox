@@ -15,8 +15,8 @@ RUN <<-"EOF"
         autoconf automake binutils gdb git libtool make \
         ccache cmake \
         clang clang-analyzer clang-dev clang-extra-tools clang-libs \
-            clang-static lld lld-dev lld-static lldb lldb-dev llvm13 \
-            llvm13-dev llvm13-libs llvm13-static openmp openmp-dev py3-clang \
+            clang-static lld lld-dev lld-libs lldb lldb-dev llvm llvm-dev \
+            llvm-static ocaml ocaml-dev openmp openmp-dev openmp py3-clang \
         cargo rust rustfmt rust-clippy rust-gdb \
         openjdk17 \
         go \
