@@ -12,8 +12,7 @@ RUN <<-"EOF"
         texinfo \
         alpine-sdk \
         gcc g++ \
-        autoconf automake binutils gdb git libtool make \
-        ccache cmake \
+        autoconf automake binutils ccache cmake gdb git libtool make \
         clang clang-analyzer clang-dev clang-extra-tools clang-libs \
             clang-static lld lld-dev lld-libs lldb lldb-dev llvm llvm-dev \
             llvm-static ocaml ocaml-dev openmp openmp-dev openmp py3-clang \
