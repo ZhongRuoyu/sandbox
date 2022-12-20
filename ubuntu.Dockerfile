@@ -31,7 +31,7 @@ RUN <<-"EOF"
         apache2-utils \
         dnsutils iputils-ping iputils-tracepath net-tools traceroute whois \
         file gawk jq tree unzip zip \
-        emacs nano vim \
+        nano vim \
         htop sudo tmux zsh
     apt-get autoremove -y
     rm -rf /var/lib/apt/lists/*

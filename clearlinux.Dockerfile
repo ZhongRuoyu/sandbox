@@ -27,7 +27,7 @@ RUN <<-"EOF"
         httpd \
         clr-network-troubleshooter network-basic \
         file jq unzip zip \
-        editors emacs vim \
+        editors vim \
         htop shells sudo tmux zsh
     swupd clean --all
 EOF
