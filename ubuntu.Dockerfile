@@ -8,7 +8,7 @@ RUN <<-"EOF"
     apt-get update
     yes | unminimize
     apt-get upgrade -y
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         ubuntu-server \
         manpages manpages-dev man-db \
         info texinfo \
