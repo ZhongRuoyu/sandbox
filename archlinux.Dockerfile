@@ -27,7 +27,6 @@ RUN <<-"EOF"
         file gawk jq tree unzip zip \
         nano vim \
         htop sudo tmux zsh
-    (pacman -Qdtq | pacman -Rs -) || true
     pacman -Scc
     rm -rf /var/lib/pacman/sync/*
 EOF
