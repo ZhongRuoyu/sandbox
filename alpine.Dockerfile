@@ -26,7 +26,7 @@ RUN <<-"EOF"
         openssh \
         ca-certificates curl wget \
         apache2-utils \
-        bind-tools iputils net-tools traceroute whois \
+        bind-tools iputils whois \
         file gawk jq tree unzip zip \
         nano vim \
         htop sudo tmux zsh

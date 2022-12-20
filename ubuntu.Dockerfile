@@ -29,7 +29,7 @@ RUN <<-"EOF"
         openssh-client openssh-server \
         ca-certificates curl wget \
         apache2-utils \
-        dnsutils iputils-ping iputils-tracepath net-tools traceroute whois \
+        bind9-dnsutils iputils-ping iputils-tracepath whois \
         file gawk jq tree unzip zip \
         nano vim \
         htop sudo tmux zsh

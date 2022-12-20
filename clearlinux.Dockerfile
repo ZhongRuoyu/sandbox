@@ -25,7 +25,7 @@ RUN <<-"EOF"
         openssh-client openssh-server \
         curl wget \
         httpd \
-        clr-network-troubleshooter network-basic \
+        network-basic \
         file jq unzip zip \
         editors vim \
         htop shells sudo tmux zsh
