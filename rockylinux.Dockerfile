@@ -28,7 +28,7 @@ RUN <<-"EOF"
         ca-certificates curl wget \
         httpd-tools \
         bind-utils iputils net-tools traceroute whois \
-        file gawk tree unzip zip \
+        file gawk jq tree unzip zip \
         emacs nano vim \
         htop sudo tmux zsh
     dnf autoremove -y

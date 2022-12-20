@@ -24,7 +24,7 @@ RUN <<-"EOF"
         ca-certificates curl wget \
         apache \
         bind iputils net-tools traceroute whois \
-        file gawk tree unzip zip \
+        file gawk jq tree unzip zip \
         emacs nano vim \
         htop sudo tmux zsh
     (pacman -Qdtq | pacman -Rs -) || true
