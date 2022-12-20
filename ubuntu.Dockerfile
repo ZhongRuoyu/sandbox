@@ -33,7 +33,7 @@ RUN <<-"EOF"
         file gawk jq tree unzip zip \
         nano vim \
         htop sudo tmux zsh
-    apt-get autoremove -y
+    apt-get autoremove -y --purge
     rm -rf /var/lib/apt/lists/*
 EOF
 
