@@ -16,7 +16,7 @@ RUN <<-"EOF"
         autoconf automake binutils ccache cmake gdb git libtool make valgrind \
         clang clang-devel clang-libs clang-tools-extra lld lldb lldb-devel \
             llvm llvm-devel llvm-libs llvm-static \
-        cargo rust rustfmt rust-gdb rust-lldb \
+        cargo rust rustfmt rust-gdb \
         java-latest-openjdk-devel \
         golang \
         nodejs npm \
