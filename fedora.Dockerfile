@@ -18,7 +18,7 @@ RUN <<-"EOF"
         clang clang-devel clang-libs clang-tools-extra libcxx libcxx-devel \
             libcxx-static libcxxabi libcxxabi-devel libcxxabi-static lld lldb \
             lldb-devel llvm llvm-devel llvm-libs llvm-static \
-        cargo clippy rust rustfmt rust-gdb \
+        cargo rust rustfmt rust-gdb \
         java-latest-openjdk-devel \
         golang \
         nodejs npm \

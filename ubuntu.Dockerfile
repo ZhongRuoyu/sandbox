@@ -18,7 +18,7 @@ RUN <<-"EOF"
         clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 \
             libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev lld \
             lldb llvm-dev llvm-runtime llvm \
-        cargo rustc rustfmt rust-clippy rust-gdb \
+        cargo rustc rustfmt rust-gdb \
         default-jdk \
         golang \
         nodejs npm \
