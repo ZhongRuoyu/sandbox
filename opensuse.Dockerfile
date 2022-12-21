@@ -9,7 +9,7 @@ RUN <<-"EOF"
         -Ei 's/^(rpm.install.excludedocs[[:space:]]*=.*)$/# \1/g' \
         /etc/zypp/zypp.conf
     zypper update -y
-    zypper install -y \
+    zypper install -y --no-recommends \
         patterns-base-base \
         man man-pages \
         info texinfo \
