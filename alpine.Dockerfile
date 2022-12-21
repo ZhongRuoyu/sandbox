@@ -16,7 +16,7 @@ RUN <<-"EOF"
         clang clang-analyzer clang-dev clang-extra-tools clang-libs \
             clang-static lld lld-dev lld-libs lldb lldb-dev llvm llvm-dev \
             llvm-static \
-        cargo rust rustfmt rust-gdb \
+        cargo rust rustfmt rust-gdb rust-lldb \
         openjdk17 \
         go \
         nodejs npm \
