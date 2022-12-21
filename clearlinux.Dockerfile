@@ -27,7 +27,7 @@ RUN <<-"EOF"
         httpd \
         network-basic \
         file jq unzip zip \
-        editors vim \
+        less editors vim \
         htop shells sudo tmux zsh
     swupd clean --all
 EOF

@@ -28,7 +28,7 @@ RUN <<-"EOF"
         apache2-utils \
         bind-tools iputils whois \
         file gawk jq tree unzip zip \
-        nano vim \
+        less nano vim \
         htop sudo tmux zsh
 EOF
 
