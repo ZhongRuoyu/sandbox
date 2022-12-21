@@ -14,9 +14,8 @@ RUN <<-"EOF"
         @development \
         gcc gcc-c++ \
         autoconf automake binutils ccache cmake gdb git libtool make valgrind \
-        clang clang-devel clang-libs clang-tools-extra libomp libomp-devel \
-            lld lldb lldb-devel llvm llvm-devel llvm-libs llvm-static \
-            python3-clang \
+        clang clang-devel clang-libs clang-tools-extra lld lldb lldb-devel \
+            llvm llvm-devel llvm-libs llvm-static \
         cargo clippy rust rustfmt rust-gdb \
         java-latest-openjdk-devel \
         golang \

@@ -12,7 +12,7 @@ RUN <<-"EOF"
         base-devel \
         gcc \
         autoconf automake binutils ccache cmake gdb git libtool make valgrind \
-        clang libc++ libc++abi lld lldb llvm llvm-libs openmp \
+        clang libc++ libc++abi lld lldb llvm llvm-libs \
         rust \
         jdk-openjdk \
         go \
