@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:1
 
-ARG BASE_IMAGE_TAG=latest
-FROM fedora:${BASE_IMAGE_TAG}
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 
 RUN <<-"EOF"
     set -e
-    sed -i '/^tsflags=.*$/d' /etc/dnf/dnf.conf
+    sed -Ei 's/^(tsflags=.*)$/# \1/g' /etc/dnf/dnf.conf
     dnf upgrade -y
     dnf install -y \
         @server-product-environment \

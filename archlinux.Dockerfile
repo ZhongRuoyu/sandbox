@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:1
 
-ARG BASE_IMAGE_TAG=latest
-FROM archlinux:${BASE_IMAGE_TAG}
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 
 RUN <<-"EOF"
     set -e
-    sed -i '/^NoExtract[[:space:]]*=.*$/d' /etc/pacman.conf
+    sed -Ei 's/^(NoExtract[[:space:]]*=.*)$/# \1/g' /etc/pacman.conf
     pacman -Syu --needed --noconfirm \
         man-db man-pages \
         texinfo \

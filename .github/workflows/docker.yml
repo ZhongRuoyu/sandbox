@@ -17,39 +17,39 @@ jobs:
           - tags: zhongruoyu/sandbox:latest,zhongruoyu/sandbox:ubuntu,zhongruoyu/sandbox:jammy
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            build-args: BASE_IMAGE_TAG=jammy
+            build-args: BASE_IMAGE=ubuntu:jammy
           - tags: zhongruoyu/sandbox:kinetic
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            build-args: BASE_IMAGE_TAG=kinetic
+            build-args: BASE_IMAGE=ubuntu:kinetic
           - tags: zhongruoyu/sandbox:focal
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            build-args: BASE_IMAGE_TAG=focal
+            build-args: BASE_IMAGE=ubuntu:focal
           - tags: zhongruoyu/sandbox:debian,zhongruoyu/sandbox:bullseye
             platforms: linux/amd64,linux/arm64
             file: debian.Dockerfile
-            build-args: BASE_IMAGE_TAG=bullseye
+            build-args: BASE_IMAGE=debian:bullseye
           - tags: zhongruoyu/sandbox:fedora
             platforms: linux/amd64,linux/arm64
             file: fedora.Dockerfile
-            build-args: BASE_IMAGE_TAG=latest
+            build-args: BASE_IMAGE=fedora:latest
           - tags: zhongruoyu/sandbox:rockylinux,zhongruoyu/sandbox:rockylinux-9
             platforms: linux/amd64,linux/arm64
             file: rockylinux.Dockerfile
-            build-args: BASE_IMAGE_TAG=9
+            build-args: BASE_IMAGE=rockylinux:9
           - tags: zhongruoyu/sandbox:archlinux
             platforms: linux/amd64
             file: archlinux.Dockerfile
-            build-args: BASE_IMAGE_TAG=latest
+            build-args: BASE_IMAGE=archlinux:latest
           - tags: zhongruoyu/sandbox:clearlinux
             platforms: linux/amd64
             file: clearlinux.Dockerfile
-            build-args: BASE_IMAGE_TAG=latest
+            build-args: BASE_IMAGE=clearlinux:latest
           - tags: zhongruoyu/sandbox:alpine
             platforms: linux/amd64,linux/arm64
             file: alpine.Dockerfile
-            build-args: BASE_IMAGE_TAG=latest
+            build-args: BASE_IMAGE=alpine:latest
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
