@@ -26,7 +26,7 @@ RUN <<-"EOF"
         bind iputils whois \
         file gawk jq tree unzip zip \
         less nano vim \
-        htop sudo tmux zsh
+        bash htop sudo tmux zsh
     pacman -Scc
     rm -rf /var/lib/pacman/sync/*
 EOF

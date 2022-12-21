@@ -29,7 +29,7 @@ RUN <<-"EOF"
         bind-tools iputils whois \
         file gawk jq tree unzip zip \
         less nano vim \
-        htop sudo tmux zsh
+        bash htop sudo tmux zsh
 EOF
 
 WORKDIR /root

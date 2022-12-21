@@ -32,7 +32,7 @@ RUN <<-"EOF"
         bind-utils iputils whois \
         file gawk jq tree unzip zip \
         less nano vim \
-        htop sudo tmux zsh
+        bash htop sudo tmux zsh
     dnf autoremove -y
     dnf clean all
 EOF

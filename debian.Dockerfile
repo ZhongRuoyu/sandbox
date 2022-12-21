@@ -30,7 +30,7 @@ RUN <<-"EOF"
         bind9-dnsutils iputils-ping iputils-tracepath whois \
         file gawk jq tree unzip zip \
         less nano vim \
-        htop sudo tmux zsh
+        bash htop sudo tmux zsh
     apt-get autoremove -y --purge
     rm -rf /var/lib/apt/lists/*
 EOF
