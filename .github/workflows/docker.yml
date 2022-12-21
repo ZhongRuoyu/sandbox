@@ -42,6 +42,14 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: rockylinux.Dockerfile
             build-args: BASE_IMAGE=rockylinux:8
+          - tags: zhongruoyu/sandbox:almalinux,zhongruoyu/sandbox:almalinux-9
+            platforms: linux/amd64,linux/arm64
+            file: almalinux.Dockerfile
+            build-args: BASE_IMAGE=almalinux:9
+          - tags: zhongruoyu/sandbox:almalinux-8
+            platforms: linux/amd64,linux/arm64
+            file: almalinux.Dockerfile
+            build-args: BASE_IMAGE=almalinux:8
           - tags: zhongruoyu/sandbox:opensuse,zhongruoyu/sandbox:opensuse-tumbleweed
             platforms: linux/amd64,linux/arm64
             file: opensuse.Dockerfile
