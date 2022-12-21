@@ -38,6 +38,10 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: rockylinux.Dockerfile
             build-args: BASE_IMAGE=rockylinux:9
+          - tags: zhongruoyu/sandbox:rockylinux-8
+            platforms: linux/amd64,linux/arm64
+            file: rockylinux.Dockerfile
+            build-args: BASE_IMAGE=rockylinux:8
           - tags: zhongruoyu/sandbox:opensuse,zhongruoyu/sandbox:opensuse-tumbleweed
             platforms: linux/amd64,linux/arm64
             file: opensuse.Dockerfile

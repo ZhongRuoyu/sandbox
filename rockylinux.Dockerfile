@@ -7,7 +7,7 @@ RUN <<-"EOF"
     set -e
     dnf upgrade -y
     dnf install -y epel-release
-    dnf install -y --allowerasing \
+    dnf install -y --skip-broken \
         @server-product-environment \
         man-db man-pages \
         info \
@@ -20,7 +20,7 @@ RUN <<-"EOF"
         java-latest-openjdk-devel \
         golang \
         nodejs npm \
-        python3 python3-pip python-unversioned-command \
+        python3 python3-pip \
         ruby \
         gnupg openssl \
         openssh openssh-clients openssh-server \
