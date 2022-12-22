@@ -16,7 +16,7 @@ RUN <<-"EOF"
     gcc gcc-c++ \
     autoconf automake binutils ccache cmake gdb git libtool make valgrind \
     clang clang-devel clang-tools libc++-devel libc++1 libc++abi-devel \
-      libc++abi1 lld llvm llvm-devel \
+      libc++abi1 lld lldb lldb-devel llvm llvm-devel \
     cargo rust \
     java-17-openjdk \
     go \
