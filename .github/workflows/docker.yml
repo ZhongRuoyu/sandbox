@@ -51,11 +51,11 @@ jobs:
             file: almalinux.Dockerfile
             build-args: BASE_IMAGE=almalinux:8
           - tags: zhongruoyu/sandbox:opensuse,zhongruoyu/sandbox:opensuse-tumbleweed
-            platforms: linux/amd64,linux/arm64
+            platforms: linux/amd64
             file: opensuse.Dockerfile
             build-args: BASE_IMAGE=opensuse/tumbleweed:latest
           - tags: zhongruoyu/sandbox:opensuse-leap,zhongruoyu/sandbox:opensuse-leap-15
-            platforms: linux/amd64,linux/arm64
+            platforms: linux/amd64
             file: opensuse.Dockerfile
             build-args: BASE_IMAGE=opensuse/leap:15
           - tags: zhongruoyu/sandbox:archlinux
