@@ -6,6 +6,19 @@ FROM ${BASE_IMAGE}
 RUN <<-"EOF"
   set -e
   dnf upgrade -y
+  case "$(
+    source /etc/os-release
+    echo "$PLATFORM_ID"
+  )" in
+  "platform:el8")
+    dnf install -y "dnf-command(config-manager)"
+    dnf config-manager --set-enabled powertools
+    ;;
+  "platform:el9")
+    dnf install -y "dnf-command(config-manager)"
+    dnf config-manager --set-enabled crb
+    ;;
+  esac
   dnf install -y epel-release
   dnf install -y --skip-broken \
     @server-product-environment \
