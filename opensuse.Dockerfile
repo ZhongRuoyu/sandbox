@@ -5,9 +5,7 @@ FROM ${BASE_IMAGE}
 
 RUN <<-"EOF"
   set -e
-  sed \
-    -Ei 's/^(rpm.install.excludedocs[[:space:]]*=.*)$/# \1/g' \
-    /etc/zypp/zypp.conf
+  sed -Ei 's/^(rpm.install.excludedocs\s*=.*)$/# \1/g' /etc/zypp/zypp.conf
   zypper update -y
   zypper install -y --no-recommends \
     patterns-base-base \

@@ -5,7 +5,7 @@ FROM ${BASE_IMAGE}
 
 RUN <<-"EOF"
   set -e
-  sed -Ei 's/^(NoExtract[[:space:]]*=.*)$/# \1/g' /etc/pacman.conf
+  sed -Ei 's/^(NoExtract\s*=.*)$/# \1/g' /etc/pacman.conf
   pacman -Syu --needed --noconfirm \
     man-db man-pages \
     texinfo \

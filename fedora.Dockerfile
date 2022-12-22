@@ -5,7 +5,7 @@ FROM ${BASE_IMAGE}
 
 RUN <<-"EOF"
   set -e
-  sed -Ei 's/^(tsflags=.*)$/# \1/g' /etc/dnf/dnf.conf
+  sed -Ei 's/^(tsflags\s*=.*)$/# \1/g' /etc/dnf/dnf.conf
   dnf upgrade -y
   dnf install -y \
     @server-product-environment \
