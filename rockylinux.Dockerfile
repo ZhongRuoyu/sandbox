@@ -26,7 +26,9 @@ RUN <<-"EOF"
     info \
     @development \
     gcc gcc-c++ \
-    autoconf automake binutils ccache cmake gdb git libtool make valgrind \
+    binutils gdb valgrind \
+    git \
+    autoconf automake ccache cmake libtool make \
     clang clang-devel clang-libs clang-tools-extra lld lldb lldb-devel llvm \
       llvm-devel llvm-libs llvm-static \
     cargo rust rustfmt rust-gdb \

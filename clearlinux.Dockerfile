@@ -13,7 +13,9 @@ RUN <<-"EOF"
     texinfo \
     dev-utils \
     c-basic c-basic-static \
-    binutils ccache gdb git make valgrind \
+    binutils gdb valgrind \
+    git \
+    ccache make \
     lldb llvm \
     rust-basic \
     java-basic \

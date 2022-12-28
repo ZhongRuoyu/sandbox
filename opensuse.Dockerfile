@@ -14,7 +14,9 @@ RUN <<-"EOF"
     patterns-devel-base-devel_basis \
     patterns-devel-C-C++-devel_C_C++ \
     gcc gcc-c++ \
-    autoconf automake binutils ccache cmake gdb git libtool make valgrind \
+    binutils gdb valgrind \
+    git \
+    autoconf automake ccache cmake libtool make \
     clang clang-devel clang-tools libc++-devel libc++1 libc++abi-devel \
       libc++abi1 lld lldb lldb-devel llvm llvm-devel \
     cargo rust \

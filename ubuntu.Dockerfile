@@ -14,7 +14,9 @@ RUN <<-"EOF"
     info texinfo \
     build-essential \
     gcc g++ \
-    autoconf automake binutils ccache cmake gdb git libtool make valgrind \
+    binutils gdb valgrind \
+    git \
+    autoconf automake ccache cmake libtool make \
     clang clang-format clang-tidy clang-tools clangd libc++-dev libc++1 \
       libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev lld lldb \
       llvm llvm-dev llvm-runtime \

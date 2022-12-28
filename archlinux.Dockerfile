@@ -11,7 +11,9 @@ RUN <<-"EOF"
     texinfo \
     base-devel \
     gcc \
-    autoconf automake binutils ccache cmake gdb git libtool make valgrind \
+    binutils gdb valgrind \
+    git \
+    autoconf automake ccache cmake libtool make \
     clang libc++ libc++abi lld lldb llvm llvm-libs \
     rust \
     jdk-openjdk \
