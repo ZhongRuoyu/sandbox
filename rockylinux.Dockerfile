@@ -26,6 +26,7 @@ RUN <<-"EOF"
     info \
     @development \
     gcc gcc-c++ \
+    nasm \
     binutils gdb valgrind \
     git \
     autoconf automake ccache cmake libtool make \

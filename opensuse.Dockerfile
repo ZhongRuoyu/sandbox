@@ -14,6 +14,7 @@ RUN <<-"EOF"
     patterns-devel-base-devel_basis \
     patterns-devel-C-C++-devel_C_C++ \
     gcc gcc-c++ \
+    nasm \
     binutils gdb valgrind \
     git \
     autoconf automake ccache cmake libtool make \

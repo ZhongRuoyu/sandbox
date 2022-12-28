@@ -12,6 +12,7 @@ RUN <<-"EOF"
     texinfo \
     alpine-sdk \
     gcc g++ \
+    nasm \
     binutils gdb valgrind \
     git \
     autoconf automake ccache cmake libtool make \

@@ -13,6 +13,7 @@ RUN <<-"EOF"
     texinfo \
     dev-utils \
     c-basic c-basic-static \
+    nasm \
     binutils gdb valgrind \
     git \
     ccache make \

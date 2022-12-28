@@ -11,6 +11,7 @@ RUN <<-"EOF"
     texinfo \
     base-devel \
     gcc \
+    nasm \
     binutils gdb valgrind \
     git \
     autoconf automake ccache cmake libtool make \

@@ -12,6 +12,7 @@ RUN <<-"EOF"
     info texinfo \
     build-essential \
     gcc g++ \
+    nasm \
     binutils gdb valgrind \
     git \
     autoconf automake ccache cmake libtool make \
