@@ -26,7 +26,7 @@ RUN <<-"EOF"
     ruby-full \
     gnupg openssl \
     openssh \
-    bind-tools iputils whois \
+    bind-tools iputils net-tools whois \
     apache2-utils ca-certificates curl wget \
     file gawk jq tree unzip zip \
     less nano vim \

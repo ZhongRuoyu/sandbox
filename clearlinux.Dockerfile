@@ -26,7 +26,7 @@ RUN <<-"EOF"
     ruby-basic \
     gnupg openssl \
     openssh-client openssh-server \
-    network-basic \
+    net-tools network-basic \
     curl httpd wget \
     file jq unzip zip \
     less editors vim \

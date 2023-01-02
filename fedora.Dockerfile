@@ -29,7 +29,7 @@ RUN <<-"EOF"
     ruby \
     gnupg openssl \
     openssh openssh-clients openssh-server \
-    bind-utils iputils whois \
+    bind-utils iputils net-tools whois \
     ca-certificates curl httpd-tools wget \
     file gawk jq tree unzip zip \
     less nano vim \
