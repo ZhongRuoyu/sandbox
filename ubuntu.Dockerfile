@@ -29,9 +29,8 @@ RUN <<-"EOF"
     ruby-full \
     gnupg openssl \
     openssh-client openssh-server \
-    ca-certificates curl wget \
-    apache2-utils \
     bind9-dnsutils iputils-ping iputils-tracepath whois \
+    apache2-utils ca-certificates curl wget \
     file gawk jq tree unzip zip \
     less nano vim \
     bash htop sudo tmux zsh

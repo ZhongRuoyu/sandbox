@@ -26,9 +26,8 @@ RUN <<-"EOF"
     ruby-basic \
     gnupg openssl \
     openssh-client openssh-server \
-    curl wget \
-    httpd \
     network-basic \
+    curl httpd wget \
     file jq unzip zip \
     less editors vim \
     htop shells sudo tmux zsh

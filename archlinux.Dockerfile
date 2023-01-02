@@ -24,9 +24,8 @@ RUN <<-"EOF"
     ruby \
     gnupg openssl \
     openssh \
-    ca-certificates curl wget \
-    apache \
     bind iputils whois \
+    apache ca-certificates curl wget \
     file gawk jq tree unzip zip \
     less nano vim \
     bash htop sudo tmux zsh
