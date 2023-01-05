@@ -13,7 +13,7 @@ RUN <<-"EOF"
     alpine-sdk \
     gcc g++ \
     nasm \
-    binutils gdb valgrind \
+    binutils gdb patchelf valgrind \
     git \
     autoconf automake ccache cmake libtool make \
     clang clang-analyzer clang-dev clang-extra-tools clang-libs clang-static \

@@ -15,7 +15,7 @@ RUN <<-"EOF"
     build-essential \
     gcc g++ \
     nasm \
-    binutils gdb valgrind \
+    binutils gdb patchelf valgrind \
     git \
     autoconf automake ccache cmake libtool make \
     clang clang-format clang-tidy clang-tools clangd libc++-dev libc++1 \

@@ -12,7 +12,7 @@ RUN <<-"EOF"
     base-devel \
     gcc \
     nasm \
-    binutils gdb valgrind \
+    binutils gdb patchelf valgrind \
     git \
     autoconf automake ccache cmake libtool make \
     clang libc++ libc++abi lld lldb llvm llvm-libs \
