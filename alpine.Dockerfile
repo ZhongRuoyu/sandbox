@@ -30,7 +30,7 @@ RUN <<-"EOF"
     apache2-utils ca-certificates curl wget \
     file gawk jq tree unzip zip \
     less nano vim \
-    bash htop sudo tmux zsh
+    bash htop moreutils sudo tmux zsh
 EOF
 
 WORKDIR /root

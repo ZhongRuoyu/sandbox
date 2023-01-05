@@ -30,7 +30,7 @@ RUN <<-"EOF"
     curl httpd wget \
     file jq unzip zip \
     less editors vim \
-    htop shells sudo tmux zsh
+    htop moreutils shells sudo tmux zsh
   swupd clean --all
 EOF
 
