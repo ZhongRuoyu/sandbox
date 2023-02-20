@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 ARG BASE_IMAGE
-FROM ${BASE_IMAGE}
+FROM "${BASE_IMAGE}"
 
 RUN <<-"EOF"
   set -e
