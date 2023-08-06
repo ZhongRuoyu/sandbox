@@ -6,7 +6,7 @@ FROM "${BASE_IMAGE}"
 RUN <<-"EOF"
   set -e
   swupd update
-  swupd bundle-add \
+  swupd bundle-add --skip-diskspace-check \
     os-core os-core-plus os-core-search os-core-update os-core-webproxy \
     sysadmin-basic user-basic \
     man-pages \
