@@ -18,10 +18,10 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
             build-args: BASE_IMAGE=ubuntu:jammy
-          - tags: zhongruoyu/sandbox:kinetic
+          - tags: zhongruoyu/sandbox:lunar
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            build-args: BASE_IMAGE=ubuntu:kinetic
+            build-args: BASE_IMAGE=ubuntu:lunar
           - tags: zhongruoyu/sandbox:focal
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
