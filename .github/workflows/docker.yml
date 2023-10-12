@@ -18,6 +18,10 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
             build-args: BASE_IMAGE=ubuntu:jammy
+          - tags: zhongruoyu/sandbox:mantic
+            platforms: linux/amd64,linux/arm64
+            file: ubuntu.Dockerfile
+            build-args: BASE_IMAGE=ubuntu:mantic
           - tags: zhongruoyu/sandbox:lunar
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
