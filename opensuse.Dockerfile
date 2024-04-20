@@ -21,7 +21,7 @@ RUN <<-"EOF"
     clang clang-devel clang-tools libc++-devel libc++1 libc++abi-devel \
       libc++abi1 lld lldb lldb-devel llvm llvm-devel \
     cargo rust \
-    java-17-openjdk \
+    java-17-openjdk-devel \
     go \
     nodejs-default npm-default \
     python3 python3-pip \
