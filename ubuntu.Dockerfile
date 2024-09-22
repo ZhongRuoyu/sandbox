@@ -6,6 +6,7 @@ FROM "${BASE_IMAGE}"
 RUN <<-"EOF"
   set -e
   apt-get update
+  command -v unminimize || apt-get install -y --no-install-recommends unminimize
   yes | unminimize
   apt-get upgrade -y
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
