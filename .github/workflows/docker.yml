@@ -78,6 +78,7 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: alpine.Dockerfile
             build-args: BASE_IMAGE=alpine:latest
+    name: ${{ matrix.target.tags }}
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -87,7 +88,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: zhongruoyu
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v6
@@ -97,6 +98,7 @@ jobs:
           file: ${{ matrix.target.file }}
           build-args: ${{ matrix.target.build-args }}
           push: true
+
   workflow-dispatch:
     needs:
       - docker
@@ -112,12 +114,17 @@ jobs:
     steps:
       - name: Workflow dispatch
         uses: actions/github-script@v7
+        env:
+          OWNER: ${{ matrix.workflow.owner }}
+          REPO: ${{ matrix.workflow.repo }}
+          WORKFLOW_ID: ${{ matrix.workflow.workflow_id }}
+          REF: ${{ matrix.workflow.ref }}
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           script: |
             github.rest.actions.createWorkflowDispatch({
-              owner: "${{ matrix.workflow.owner }}",
-              repo: "${{ matrix.workflow.repo }}",
-              workflow_id: "${{ matrix.workflow.workflow_id }}",
-              ref: "${{ matrix.workflow.ref }}",
+              owner: process.env.OWNER,
+              repo: process.env.REPO,
+              workflow_id: process.env.WORKFLOW_ID,
+              ref: process.env.REF,
             });
