@@ -13,23 +13,17 @@ RUN <<-"EOF"
     texinfo \
     dev-utils \
     c-basic c-basic-static \
-    nasm \
     binutils gdb valgrind \
     git \
     ccache make \
     lldb llvm \
-    rust-basic \
-    java-basic \
-    go-basic \
-    nodejs-basic \
     python3-basic \
-    ruby-basic \
     gnupg openssl \
     openssh-client openssh-server \
     net-tools network-basic \
     curl httpd wget \
     file jq unzip zip \
-    less editors vim \
+    less vim \
     htop moreutils shells sudo tmux zsh
   swupd clean --all
 EOF

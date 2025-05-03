@@ -14,24 +14,18 @@ RUN <<-"EOF"
     patterns-devel-base-devel_basis \
     patterns-devel-C-C++-devel_C_C++ \
     gcc gcc-c++ \
-    nasm \
     binutils gdb patchelf valgrind \
     git \
     autoconf automake ccache cmake libtool make \
     clang clang-devel clang-tools libc++-devel libc++1 libc++abi-devel \
       libc++abi1 lld lldb lldb-devel llvm llvm-devel \
-    cargo rust \
-    java-17-openjdk-devel \
-    go \
-    nodejs-default npm-default \
     python3 python3-pip \
-    ruby \
     gnupg openssl \
     openssh openssh-clients openssh-server \
     bind-utils iputils net-tools whois \
     apache2-utils ca-certificates curl wget \
     file gawk jq tree unzip zip \
-    less nano vim \
+    less vim \
     bash htop moreutils sudo tmux zsh
   zypper clean -a
 EOF

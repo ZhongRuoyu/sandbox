@@ -12,24 +12,18 @@ RUN <<-"EOF"
     texinfo \
     alpine-sdk \
     gcc g++ \
-    nasm \
     binutils gdb patchelf valgrind \
     git \
     autoconf automake ccache cmake libtool make \
     clang clang-analyzer clang-dev clang-extra-tools clang-libs clang-static \
       lld lld-dev lld-libs lldb lldb-dev llvm llvm-dev llvm-static \
-    cargo rust rustfmt rust-gdb \
-    openjdk21 \
-    go \
-    nodejs npm \
     python3 py3-pip \
-    ruby-full \
     gnupg openssl \
     openssh \
     bind-tools iputils net-tools whois \
     apache2-utils ca-certificates curl wget \
     file gawk jq tree unzip zip \
-    less nano vim \
+    less vim \
     bash htop moreutils sudo tmux zsh
 EOF
 
