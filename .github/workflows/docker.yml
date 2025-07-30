@@ -74,10 +74,6 @@ jobs:
             platforms: linux/amd64
             file: archlinux.Dockerfile
             build-args: BASE_IMAGE=archlinux:latest
-          - tags: zhongruoyu/sandbox:clearlinux
-            platforms: linux/amd64
-            file: clearlinux.Dockerfile
-            build-args: BASE_IMAGE=clearlinux:latest
           - tags: zhongruoyu/sandbox:alpine
             platforms: linux/amd64,linux/arm64
             file: alpine.Dockerfile
