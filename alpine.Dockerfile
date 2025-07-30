@@ -16,7 +16,7 @@ RUN <<-"EOF"
     git \
     autoconf automake ccache cmake libtool make \
     clang clang-analyzer clang-dev clang-extra-tools clang-libs clang-static \
-      lld lld-dev lld-libs lldb lldb-dev llvm llvm-dev llvm-static \
+      lld lld-dev lldb lldb-dev llvm llvm-dev llvm-static \
     python3 py3-pip \
     gnupg openssl \
     openssh \
