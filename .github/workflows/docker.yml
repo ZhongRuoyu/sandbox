@@ -22,10 +22,10 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
             build-args: BASE_IMAGE=ubuntu:noble
-          - tags: zhongruoyu/sandbox:oracular
+          - tags: zhongruoyu/sandbox:plucky
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
-            build-args: BASE_IMAGE=ubuntu:oracular
+            build-args: BASE_IMAGE=ubuntu:plucky
           - tags: zhongruoyu/sandbox:jammy
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
