@@ -34,7 +34,11 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
             build-args: BASE_IMAGE=ubuntu:focal
-          - tags: zhongruoyu/sandbox:debian,zhongruoyu/sandbox:bookworm
+          - tags: zhongruoyu/sandbox:debian,zhongruoyu/sandbox:trixie
+            platforms: linux/amd64,linux/arm64
+            file: debian.Dockerfile
+            build-args: BASE_IMAGE=debian:trixie
+          - tags: zhongruoyu/sandbox:bookworm
             platforms: linux/amd64,linux/arm64
             file: debian.Dockerfile
             build-args: BASE_IMAGE=debian:bookworm
