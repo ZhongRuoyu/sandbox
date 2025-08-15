@@ -46,14 +46,18 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: fedora.Dockerfile
             build-args: BASE_IMAGE=fedora:latest
-          - tags: zhongruoyu/sandbox:rockylinux,zhongruoyu/sandbox:rockylinux-9
+          - tags: zhongruoyu/sandbox:rockylinux,zhongruoyu/sandbox:rockylinux-10
             platforms: linux/amd64,linux/arm64
             file: rockylinux.Dockerfile
-            build-args: BASE_IMAGE=rockylinux:9
+            build-args: BASE_IMAGE=rockylinux/rockylinux:10
+          - tags: zhongruoyu/sandbox:rockylinux-9
+            platforms: linux/amd64,linux/arm64
+            file: rockylinux.Dockerfile
+            build-args: BASE_IMAGE=rockylinux/rockylinux:9
           - tags: zhongruoyu/sandbox:rockylinux-8
             platforms: linux/amd64,linux/arm64
             file: rockylinux.Dockerfile
-            build-args: BASE_IMAGE=rockylinux:8
+            build-args: BASE_IMAGE=rockylinux/rockylinux:8
           - tags: zhongruoyu/sandbox:almalinux,zhongruoyu/sandbox:almalinux-9
             platforms: linux/amd64,linux/arm64
             file: almalinux.Dockerfile

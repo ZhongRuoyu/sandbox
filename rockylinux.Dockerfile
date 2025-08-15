@@ -14,7 +14,7 @@ RUN <<-"EOF"
     dnf install -y "dnf-command(config-manager)"
     dnf config-manager --set-enabled powertools
     ;;
-  "platform:el9")
+  "platform:el9" | "platform:el10")
     dnf install -y "dnf-command(config-manager)"
     dnf config-manager --set-enabled crb
     ;;
