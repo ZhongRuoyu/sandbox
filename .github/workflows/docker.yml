@@ -18,7 +18,19 @@ jobs:
       fail-fast: false
       matrix:
         target:
-          - tags: zhongruoyu/sandbox:noble,zhongruoyu/sandbox:ubuntu,zhongruoyu/sandbox:latest
+          - tags: zhongruoyu/sandbox:debian,zhongruoyu/sandbox:trixie,zhongruoyu/sandbox:latest
+            platforms: linux/amd64,linux/arm64
+            file: debian.Dockerfile
+            build-args: BASE_IMAGE=debian:trixie
+          - tags: zhongruoyu/sandbox:bookworm
+            platforms: linux/amd64,linux/arm64
+            file: debian.Dockerfile
+            build-args: BASE_IMAGE=debian:bookworm
+          - tags: zhongruoyu/sandbox:bullseye
+            platforms: linux/amd64,linux/arm64
+            file: debian.Dockerfile
+            build-args: BASE_IMAGE=debian:bullseye
+          - tags: zhongruoyu/sandbox:ubuntu,zhongruoyu/sandbox:noble
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
             build-args: BASE_IMAGE=ubuntu:noble
@@ -34,18 +46,6 @@ jobs:
             platforms: linux/amd64,linux/arm64
             file: ubuntu.Dockerfile
             build-args: BASE_IMAGE=ubuntu:focal
-          - tags: zhongruoyu/sandbox:debian,zhongruoyu/sandbox:trixie
-            platforms: linux/amd64,linux/arm64
-            file: debian.Dockerfile
-            build-args: BASE_IMAGE=debian:trixie
-          - tags: zhongruoyu/sandbox:bookworm
-            platforms: linux/amd64,linux/arm64
-            file: debian.Dockerfile
-            build-args: BASE_IMAGE=debian:bookworm
-          - tags: zhongruoyu/sandbox:bullseye
-            platforms: linux/amd64,linux/arm64
-            file: debian.Dockerfile
-            build-args: BASE_IMAGE=debian:bullseye
           - tags: zhongruoyu/sandbox:fedora
             platforms: linux/amd64,linux/arm64
             file: fedora.Dockerfile
