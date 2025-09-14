@@ -26,9 +26,9 @@ RUN <<-"EOF"
     info \
     @development \
     gcc gcc-c++ \
-    binutils gdb patchelf valgrind \
+    binutils gdb patchelf \
     git \
-    autoconf automake ccache cmake libtool make \
+    cmake make \
     clang clang-devel clang-libs clang-tools-extra lld lldb lldb-devel llvm \
       llvm-devel llvm-libs llvm-static \
     python3 python3-pip \

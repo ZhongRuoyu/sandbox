@@ -12,9 +12,9 @@ RUN <<-"EOF"
     texinfo \
     alpine-sdk \
     gcc g++ \
-    binutils gdb patchelf valgrind \
+    binutils gdb patchelf \
     git \
-    autoconf automake ccache cmake libtool make \
+    cmake make \
     clang clang-analyzer clang-dev clang-extra-tools clang-libs clang-static \
       lld lld-dev lldb lldb-dev llvm llvm-dev llvm-static \
     python3 py3-pip \

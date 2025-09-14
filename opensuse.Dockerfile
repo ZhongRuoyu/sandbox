@@ -14,9 +14,9 @@ RUN <<-"EOF"
     patterns-devel-base-devel_basis \
     patterns-devel-C-C++-devel_C_C++ \
     gcc gcc-c++ \
-    binutils gdb patchelf valgrind \
+    binutils gdb patchelf \
     git \
-    autoconf automake ccache cmake libtool make \
+    cmake make \
     clang clang-devel clang-tools libc++-devel libc++1 libc++abi-devel \
       libc++abi1 lld lldb lldb-devel llvm llvm-devel \
     python3 python3-pip \

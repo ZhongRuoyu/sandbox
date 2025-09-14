@@ -11,9 +11,9 @@ RUN <<-"EOF"
     texinfo \
     base-devel \
     gcc \
-    binutils gdb patchelf valgrind \
+    binutils gdb patchelf \
     git \
-    autoconf automake ccache cmake libtool make \
+    cmake make \
     clang libc++ libc++abi lld lldb llvm llvm-libs \
     python python-pip \
     gnupg openssl \
