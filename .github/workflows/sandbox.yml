@@ -232,7 +232,7 @@ jobs:
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
-          name: digests-${{ matrix.tag }}-${{ matrix.arch }}
+          name: digests-sandbox-${{ matrix.tag }}-${{ matrix.arch }}
           path: ${{ runner.temp }}/digests/*
 
   merge:
@@ -308,7 +308,7 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           path: ${{ runner.temp }}/digests
-          pattern: digests-${{ matrix.primary-tag }}-*
+          pattern: digests-sandbox-${{ matrix.primary-tag }}-*
           merge-multiple: true
       - name: Create manifest list and push
         run: |
