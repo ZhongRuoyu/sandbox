@@ -50,6 +50,14 @@ jobs:
             file: debian.Dockerfile
             base-image: debian:sid
             arch: aarch64
+          - tag: debian-testing
+            file: debian.Dockerfile
+            base-image: debian:testing
+            arch: x86_64
+          - tag: debian-testing
+            file: debian.Dockerfile
+            base-image: debian:testing
+            arch: aarch64
           - tag: noble
             file: ubuntu.Dockerfile
             base-image: ubuntu:noble
@@ -74,13 +82,21 @@ jobs:
             file: ubuntu.Dockerfile
             base-image: ubuntu:focal
             arch: aarch64
-          - tag: plucky
+          - tag: ubuntu-rolling
             file: ubuntu.Dockerfile
-            base-image: ubuntu:plucky
+            base-image: ubuntu:rolling
             arch: x86_64
-          - tag: plucky
+          - tag: ubuntu-rolling
             file: ubuntu.Dockerfile
-            base-image: ubuntu:plucky
+            base-image: ubuntu:rolling
+            arch: aarch64
+          - tag: ubuntu-devel
+            file: ubuntu.Dockerfile
+            base-image: ubuntu:devel
+            arch: x86_64
+          - tag: ubuntu-devel
+            file: ubuntu.Dockerfile
+            base-image: ubuntu:devel
             arch: aarch64
           - tag: fedora
             file: fedora.Dockerfile
@@ -213,14 +229,18 @@ jobs:
             tags: bullseye debian-11
           - primary-tag: sid
             tags: sid debian-unstable
+          - primary-tag: debian-testing
+            tags: debian-testing
           - primary-tag: noble
             tags: noble ubuntu-24.04 ubuntu
           - primary-tag: jammy
             tags: jammy ubuntu-22.04
           - primary-tag: focal
             tags: focal ubuntu-20.04
-          - primary-tag: plucky
-            tags: plucky ubuntu-25.04
+          - primary-tag: ubuntu-rolling
+            tags: ubuntu-rolling
+          - primary-tag: ubuntu-devel
+            tags: ubuntu-devel
           - primary-tag: fedora
             tags: fedora
           - primary-tag: almalinux-10
