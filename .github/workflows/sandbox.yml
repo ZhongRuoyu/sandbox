@@ -1,0 +1,321 @@
+name: Build and publish sandbox Docker images
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-sandbox-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOCKERHUB_USERNAME: zhongruoyu
+  DOCKERHUB_REPOSITORY: zhongruoyu/sandbox
+  GHCR_USERNAME: zhongruoyu
+  GHCR_REPOSITORY: ghcr.io/zhongruoyu/sandbox
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - tag: trixie
+            file: sandbox/debian.Dockerfile
+            base-image: debian:trixie
+            arch: x86_64
+          - tag: trixie
+            file: sandbox/debian.Dockerfile
+            base-image: debian:trixie
+            arch: aarch64
+          - tag: bookworm
+            file: sandbox/debian.Dockerfile
+            base-image: debian:bookworm
+            arch: x86_64
+          - tag: bookworm
+            file: sandbox/debian.Dockerfile
+            base-image: debian:bookworm
+            arch: aarch64
+          - tag: bullseye
+            file: sandbox/debian.Dockerfile
+            base-image: debian:bullseye
+            arch: x86_64
+          - tag: bullseye
+            file: sandbox/debian.Dockerfile
+            base-image: debian:bullseye
+            arch: aarch64
+          - tag: sid
+            file: sandbox/debian.Dockerfile
+            base-image: debian:sid
+            arch: x86_64
+          - tag: sid
+            file: sandbox/debian.Dockerfile
+            base-image: debian:sid
+            arch: aarch64
+          - tag: debian-testing
+            file: sandbox/debian.Dockerfile
+            base-image: debian:testing
+            arch: x86_64
+          - tag: debian-testing
+            file: sandbox/debian.Dockerfile
+            base-image: debian:testing
+            arch: aarch64
+          - tag: noble
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:noble
+            arch: x86_64
+          - tag: noble
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:noble
+            arch: aarch64
+          - tag: jammy
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:jammy
+            arch: x86_64
+          - tag: jammy
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:jammy
+            arch: aarch64
+          - tag: focal
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:focal
+            arch: x86_64
+          - tag: focal
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:focal
+            arch: aarch64
+          - tag: ubuntu-rolling
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:rolling
+            arch: x86_64
+          - tag: ubuntu-rolling
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:rolling
+            arch: aarch64
+          - tag: ubuntu-devel
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:devel
+            arch: x86_64
+          - tag: ubuntu-devel
+            file: sandbox/ubuntu.Dockerfile
+            base-image: ubuntu:devel
+            arch: aarch64
+          - tag: fedora
+            file: sandbox/fedora.Dockerfile
+            base-image: fedora:latest
+            arch: x86_64
+          - tag: fedora
+            file: sandbox/fedora.Dockerfile
+            base-image: fedora:latest
+            arch: aarch64
+          - tag: almalinux-10
+            file: sandbox/almalinux.Dockerfile
+            base-image: almalinux:10
+            arch: x86_64
+          - tag: almalinux-10
+            file: sandbox/almalinux.Dockerfile
+            base-image: almalinux:10
+            arch: aarch64
+          - tag: almalinux-9
+            file: sandbox/almalinux.Dockerfile
+            base-image: almalinux:9
+            arch: x86_64
+          - tag: almalinux-9
+            file: sandbox/almalinux.Dockerfile
+            base-image: almalinux:9
+            arch: aarch64
+          - tag: almalinux-8
+            file: sandbox/almalinux.Dockerfile
+            base-image: almalinux:8
+            arch: x86_64
+          - tag: almalinux-8
+            file: sandbox/almalinux.Dockerfile
+            base-image: almalinux:8
+            arch: aarch64
+          - tag: rockylinux-10
+            file: sandbox/rockylinux.Dockerfile
+            base-image: rockylinux/rockylinux:10
+            arch: x86_64
+          - tag: rockylinux-10
+            file: sandbox/rockylinux.Dockerfile
+            base-image: rockylinux/rockylinux:10
+            arch: aarch64
+          - tag: rockylinux-9
+            file: sandbox/rockylinux.Dockerfile
+            base-image: rockylinux/rockylinux:9
+            arch: x86_64
+          - tag: rockylinux-9
+            file: sandbox/rockylinux.Dockerfile
+            base-image: rockylinux/rockylinux:9
+            arch: aarch64
+          - tag: rockylinux-8
+            file: sandbox/rockylinux.Dockerfile
+            base-image: rockylinux/rockylinux:8
+            arch: x86_64
+          - tag: rockylinux-8
+            file: sandbox/rockylinux.Dockerfile
+            base-image: rockylinux/rockylinux:8
+            arch: aarch64
+          - tag: archlinux
+            file: sandbox/archlinux.Dockerfile
+            base-image: archlinux:latest
+            arch: x86_64
+          - tag: opensuse-tumbleweed
+            file: sandbox/opensuse.Dockerfile
+            base-image: opensuse/tumbleweed:latest
+            arch: x86_64
+          - tag: opensuse-tumbleweed
+            file: sandbox/opensuse.Dockerfile
+            base-image: opensuse/tumbleweed:latest
+            arch: aarch64
+          - tag: opensuse-leap-15
+            file: sandbox/opensuse.Dockerfile
+            base-image: opensuse/leap:15
+            arch: x86_64
+          - tag: opensuse-leap-15
+            file: sandbox/opensuse.Dockerfile
+            base-image: opensuse/leap:15
+            arch: aarch64
+          - tag: alpine
+            file: sandbox/alpine.Dockerfile
+            base-image: alpine:latest
+            arch: x86_64
+          - tag: alpine
+            file: sandbox/alpine.Dockerfile
+            base-image: alpine:latest
+            arch: aarch64
+    name: Build ${{ matrix.tag }} (${{ matrix.arch }})
+    runs-on: ${{ matrix.arch == 'aarch64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ env.GHCR_USERNAME }}
+          password: ${{ github.token }}
+      - name: Build and push Docker image by digest
+        id: build
+        uses: docker/build-push-action@v6
+        with:
+          file: ${{ matrix.file }}
+          platforms: linux/${{ matrix.arch }}
+          build-args: BASE_IMAGE=${{ matrix.base-image }}
+          outputs: |
+            type=image,name=${{ env.DOCKERHUB_REPOSITORY }},name-canonical=true,push=true,push-by-digest=true
+            type=image,name=${{ env.GHCR_REPOSITORY }},name-canonical=true,push=true,push-by-digest=true
+      - name: Export digest
+        run: |
+          mkdir -p "$RUNNER_TEMP"/digests
+          echo "${DIGEST#sha256:}" > "$RUNNER_TEMP"/digests/"$TAG-$ARCH"
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAG: ${{ matrix.tag }}
+          ARCH: ${{ matrix.arch }}
+      - name: Upload digest
+        uses: actions/upload-artifact@v4
+        with:
+          name: digests-${{ matrix.tag }}-${{ matrix.arch }}
+          path: ${{ runner.temp }}/digests/*
+
+  merge:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - primary-tag: trixie
+            tags: trixie debian-13 debian latest
+          - primary-tag: bookworm
+            tags: bookworm debian-12
+          - primary-tag: bullseye
+            tags: bullseye debian-11
+          - primary-tag: sid
+            tags: sid debian-unstable
+          - primary-tag: debian-testing
+            tags: debian-testing
+          - primary-tag: noble
+            tags: noble ubuntu-24.04 ubuntu
+          - primary-tag: jammy
+            tags: jammy ubuntu-22.04
+          - primary-tag: focal
+            tags: focal ubuntu-20.04
+          - primary-tag: ubuntu-rolling
+            tags: ubuntu-rolling
+          - primary-tag: ubuntu-devel
+            tags: ubuntu-devel
+          - primary-tag: fedora
+            tags: fedora
+          - primary-tag: almalinux-10
+            tags: almalinux-10 almalinux
+          - primary-tag: almalinux-9
+            tags: almalinux-9
+          - primary-tag: almalinux-8
+            tags: almalinux-8
+          - primary-tag: rockylinux-10
+            tags: rockylinux-10 rockylinux
+          - primary-tag: rockylinux-9
+            tags: rockylinux-9
+          - primary-tag: rockylinux-8
+            tags: rockylinux-8
+          - primary-tag: archlinux
+            tags: archlinux
+          - primary-tag: opensuse-tumbleweed
+            tags: opensuse-tumbleweed opensuse
+          - primary-tag: opensuse-leap-15
+            tags: opensuse-leap-15 opensuse-leap
+          - primary-tag: alpine
+            tags: alpine
+    name: Merge ${{ matrix.primary-tag }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ env.GHCR_USERNAME }}
+          password: ${{ github.token }}
+      - name: Download digests
+        uses: actions/download-artifact@v5
+        with:
+          path: ${{ runner.temp }}/digests
+          pattern: digests-${{ matrix.primary-tag }}-*
+          merge-multiple: true
+      - name: Create manifest list and push
+        run: |
+          tags=()
+          for tag in $TAGS; do
+            tags+=(
+              "--tag=$DOCKERHUB_REPOSITORY:$tag"
+              "--tag=$GHCR_REPOSITORY:$tag"
+            )
+          done
+
+          images=()
+          for digest in "$RUNNER_TEMP"/digests/"$PRIMARY_TAG"-*; do
+            images+=("$GHCR_REPOSITORY@sha256:$(cat "$digest")")
+          done
+
+          docker buildx imagetools create "${tags[@]}" "${images[@]}"
+        env:
+          PRIMARY_TAG: ${{ matrix.primary-tag }}
+          TAGS: ${{ matrix.tags }}
