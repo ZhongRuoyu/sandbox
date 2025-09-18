@@ -22,123 +22,123 @@ jobs:
         include:
           - tag: trixie
             file: sandbox/debian.Dockerfile
-            base-image: debian:trixie
+            base-image: public.ecr.aws/docker/library/debian:trixie
             arch: x86_64
           - tag: trixie
             file: sandbox/debian.Dockerfile
-            base-image: debian:trixie
+            base-image: public.ecr.aws/docker/library/debian:trixie
             arch: aarch64
           - tag: bookworm
             file: sandbox/debian.Dockerfile
-            base-image: debian:bookworm
+            base-image: public.ecr.aws/docker/library/debian:bookworm
             arch: x86_64
           - tag: bookworm
             file: sandbox/debian.Dockerfile
-            base-image: debian:bookworm
+            base-image: public.ecr.aws/docker/library/debian:bookworm
             arch: aarch64
           - tag: bullseye
             file: sandbox/debian.Dockerfile
-            base-image: debian:bullseye
+            base-image: public.ecr.aws/docker/library/debian:bullseye
             arch: x86_64
           - tag: bullseye
             file: sandbox/debian.Dockerfile
-            base-image: debian:bullseye
+            base-image: public.ecr.aws/docker/library/debian:bullseye
             arch: aarch64
           - tag: sid
             file: sandbox/debian.Dockerfile
-            base-image: debian:sid
+            base-image: public.ecr.aws/docker/library/debian:sid
             arch: x86_64
           - tag: sid
             file: sandbox/debian.Dockerfile
-            base-image: debian:sid
+            base-image: public.ecr.aws/docker/library/debian:sid
             arch: aarch64
           - tag: debian-testing
             file: sandbox/debian.Dockerfile
-            base-image: debian:testing
+            base-image: public.ecr.aws/docker/library/debian:testing
             arch: x86_64
           - tag: debian-testing
             file: sandbox/debian.Dockerfile
-            base-image: debian:testing
+            base-image: public.ecr.aws/docker/library/debian:testing
             arch: aarch64
           - tag: noble
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:noble
+            base-image: public.ecr.aws/docker/library/ubuntu:noble
             arch: x86_64
           - tag: noble
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:noble
+            base-image: public.ecr.aws/docker/library/ubuntu:noble
             arch: aarch64
           - tag: jammy
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:jammy
+            base-image: public.ecr.aws/docker/library/ubuntu:jammy
             arch: x86_64
           - tag: jammy
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:jammy
+            base-image: public.ecr.aws/docker/library/ubuntu:jammy
             arch: aarch64
           - tag: focal
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:focal
+            base-image: public.ecr.aws/docker/library/ubuntu:focal
             arch: x86_64
           - tag: focal
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:focal
+            base-image: public.ecr.aws/docker/library/ubuntu:focal
             arch: aarch64
           - tag: ubuntu-rolling
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:rolling
+            base-image: public.ecr.aws/docker/library/ubuntu:rolling
             arch: x86_64
           - tag: ubuntu-rolling
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:rolling
+            base-image: public.ecr.aws/docker/library/ubuntu:rolling
             arch: aarch64
           - tag: ubuntu-devel
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:devel
+            base-image: public.ecr.aws/docker/library/ubuntu:devel
             arch: x86_64
           - tag: ubuntu-devel
             file: sandbox/ubuntu.Dockerfile
-            base-image: ubuntu:devel
+            base-image: public.ecr.aws/docker/library/ubuntu:devel
             arch: aarch64
           - tag: fedora-latest
             file: sandbox/fedora.Dockerfile
-            base-image: fedora:latest
+            base-image: public.ecr.aws/docker/library/fedora:latest
             arch: x86_64
           - tag: fedora-latest
             file: sandbox/fedora.Dockerfile
-            base-image: fedora:latest
+            base-image: public.ecr.aws/docker/library/fedora:latest
             arch: aarch64
           - tag: fedora-rawhide
             file: sandbox/fedora.Dockerfile
-            base-image: fedora:rawhide
+            base-image: public.ecr.aws/docker/library/fedora:rawhide
             arch: x86_64
           - tag: fedora-rawhide
             file: sandbox/fedora.Dockerfile
-            base-image: fedora:rawhide
+            base-image: public.ecr.aws/docker/library/fedora:rawhide
             arch: aarch64
           - tag: almalinux-10
             file: sandbox/almalinux.Dockerfile
-            base-image: almalinux:10
+            base-image: public.ecr.aws/docker/library/almalinux:10
             arch: x86_64
           - tag: almalinux-10
             file: sandbox/almalinux.Dockerfile
-            base-image: almalinux:10
+            base-image: public.ecr.aws/docker/library/almalinux:10
             arch: aarch64
           - tag: almalinux-9
             file: sandbox/almalinux.Dockerfile
-            base-image: almalinux:9
+            base-image: public.ecr.aws/docker/library/almalinux:9
             arch: x86_64
           - tag: almalinux-9
             file: sandbox/almalinux.Dockerfile
-            base-image: almalinux:9
+            base-image: public.ecr.aws/docker/library/almalinux:9
             arch: aarch64
           - tag: almalinux-8
             file: sandbox/almalinux.Dockerfile
-            base-image: almalinux:8
+            base-image: public.ecr.aws/docker/library/almalinux:8
             arch: x86_64
           - tag: almalinux-8
             file: sandbox/almalinux.Dockerfile
-            base-image: almalinux:8
+            base-image: public.ecr.aws/docker/library/almalinux:8
             arch: aarch64
           - tag: rockylinux-10
             file: sandbox/rockylinux.Dockerfile
@@ -166,31 +166,31 @@ jobs:
             arch: aarch64
           - tag: archlinux
             file: sandbox/archlinux.Dockerfile
-            base-image: archlinux:latest
+            base-image: public.ecr.aws/docker/library/archlinux:latest
             arch: x86_64
           - tag: opensuse-tumbleweed
             file: sandbox/opensuse.Dockerfile
-            base-image: opensuse/tumbleweed:latest
+            base-image: registry.opensuse.org/opensuse/tumbleweed:latest
             arch: x86_64
           - tag: opensuse-tumbleweed
             file: sandbox/opensuse.Dockerfile
-            base-image: opensuse/tumbleweed:latest
+            base-image: registry.opensuse.org/opensuse/tumbleweed:latest
             arch: aarch64
           - tag: opensuse-leap-15
             file: sandbox/opensuse.Dockerfile
-            base-image: opensuse/leap:15
+            base-image: registry.opensuse.org/opensuse/leap:15
             arch: x86_64
           - tag: opensuse-leap-15
             file: sandbox/opensuse.Dockerfile
-            base-image: opensuse/leap:15
+            base-image: registry.opensuse.org/opensuse/leap:15
             arch: aarch64
           - tag: alpine
             file: sandbox/alpine.Dockerfile
-            base-image: alpine:latest
+            base-image: public.ecr.aws/docker/library/alpine:latest
             arch: x86_64
           - tag: alpine
             file: sandbox/alpine.Dockerfile
-            base-image: alpine:latest
+            base-image: public.ecr.aws/docker/library/alpine:latest
             arch: aarch64
     name: Build ${{ matrix.tag }} (${{ matrix.arch }})
     runs-on: ${{ matrix.arch == 'aarch64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
