@@ -100,13 +100,21 @@ jobs:
             file: sandbox/ubuntu.Dockerfile
             base-image: ubuntu:devel
             arch: aarch64
-          - tag: fedora
+          - tag: fedora-latest
             file: sandbox/fedora.Dockerfile
             base-image: fedora:latest
             arch: x86_64
-          - tag: fedora
+          - tag: fedora-latest
             file: sandbox/fedora.Dockerfile
             base-image: fedora:latest
+            arch: aarch64
+          - tag: fedora-rawhide
+            file: sandbox/fedora.Dockerfile
+            base-image: fedora:rawhide
+            arch: x86_64
+          - tag: fedora-rawhide
+            file: sandbox/fedora.Dockerfile
+            base-image: fedora:rawhide
             arch: aarch64
           - tag: almalinux-10
             file: sandbox/almalinux.Dockerfile
@@ -254,8 +262,10 @@ jobs:
             tags: ubuntu-rolling
           - primary-tag: ubuntu-devel
             tags: ubuntu-devel
-          - primary-tag: fedora
-            tags: fedora
+          - primary-tag: fedora-latest
+            tags: fedora-latest fedora
+          - primary-tag: fedora-rawhide
+            tags: fedora-rawhide rawhide
           - primary-tag: almalinux-10
             tags: almalinux-10 almalinux
           - primary-tag: almalinux-9
