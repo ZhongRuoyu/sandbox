@@ -14,9 +14,10 @@ EOF
 USER "${USERNAME}"
 WORKDIR "/home/${USERNAME}"
 
-COPY --chmod=755 <<-"EOF" /usr/local/bin/docker-entrypoint.sh
-#!/bin/bash
-sudo /usr/sbin/sshd -D
+RUN <<-"EOF"
+  set -e
+  git clone https://github.com/ZhongRuoyu/dotfiles.git ~/.local/share/dotfiles
+  ~/.local/share/dotfiles/install.sh
 EOF
-CMD [ "docker-entrypoint.sh" ]
-EXPOSE 22
+
+CMD [ "zsh", "-il" ]
