@@ -13,11 +13,10 @@ RUN <<-"EOF"
 EOF
 USER "${USERNAME}"
 WORKDIR "/home/${USERNAME}"
+CMD [ "zsh", "-il" ]
 
 RUN <<-"EOF"
   set -e
   git clone https://github.com/ZhongRuoyu/dotfiles.git ~/.local/share/dotfiles
   ~/.local/share/dotfiles/install.sh
 EOF
-
-CMD [ "zsh", "-il" ]
