@@ -22,7 +22,8 @@ RUN <<-"EOF"
     apache ca-certificates curl wget \
     file gawk jq tree unzip zip \
     less vim \
-    bash htop moreutils sudo tmux zsh
+    bash htop moreutils sudo tmux zsh \
+    bat fd fzf ripgrep
   pacman -Scc
   rm -rf /var/lib/pacman/sync/*
 EOF

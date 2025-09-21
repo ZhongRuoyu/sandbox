@@ -25,7 +25,8 @@ RUN <<-"EOF"
     apache2-utils ca-certificates curl wget \
     file gawk jq tree unzip zip \
     less vim \
-    bash htop moreutils sudo tmux zsh
+    bash htop moreutils sudo tmux zsh \
+    bat fd-find fzf ripgrep
   apt-get autoremove -y --purge
   rm -rf /var/lib/apt/lists/*
 EOF

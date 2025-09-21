@@ -38,7 +38,8 @@ RUN <<-"EOF"
     ca-certificates curl httpd-tools wget \
     file gawk jq tree unzip zip \
     less vim \
-    bash htop moreutils sudo tmux zsh
+    bash htop moreutils sudo tmux zsh \
+    bat fd-find fzf ripgrep
   dnf autoremove -y
   dnf clean all
 EOF
