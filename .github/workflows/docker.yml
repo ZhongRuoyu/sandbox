@@ -118,8 +118,13 @@ jobs:
             template: opensuse
             base-image: registry.opensuse.org/opensuse/tumbleweed:latest
             arches: x86_64 aarch64
+          - primary-tag: opensuse-leap-16
+            tags: opensuse-leap-16 opensuse-leap
+            template: opensuse
+            base-image: registry.opensuse.org/opensuse/leap:16.0
+            arches: x86_64 aarch64
           - primary-tag: opensuse-leap-15
-            tags: opensuse-leap-15 opensuse-leap
+            tags: opensuse-leap-15
             template: opensuse
             base-image: registry.opensuse.org/opensuse/leap:15
             arches: x86_64 aarch64
