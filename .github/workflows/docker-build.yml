@@ -1,0 +1,58 @@
+name: Build and publish sandbox and workbench Docker images
+
+on:
+  workflow_call:
+    inputs:
+      dockerhub-username:
+        type: string
+      ghcr-username:
+        type: string
+      username:
+        type: string
+      primary-tag:
+        type: string
+      tags:
+        type: string
+      template:
+        type: string
+      base-image:
+        type: string
+      arches:
+        type: string
+
+concurrency:
+  group: ${{ github.workflow }}-${{ inputs.primary-tag }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sandbox:
+    name: Build sandbox - ${{ inputs.primary-tag }}
+    uses: ./.github/workflows/docker-multiarch.yml
+    with:
+      dockerhub-username: ${{ inputs.dockerhub-username }}
+      ghcr-username: ${{ inputs.ghcr-username }}
+      repository: sandbox
+      primary-tag: ${{ inputs.primary-tag }}
+      tags: ${{ inputs.tags }}
+      file: sandbox/${{ inputs.template }}.Dockerfile
+      build-args: |
+        BASE_IMAGE=${{ inputs.base-image }}
+      arches: ${{ inputs.arches }}
+    secrets: inherit
+
+  workbench:
+    name: Build workbench - ${{ inputs.primary-tag }}
+    needs: sandbox
+    uses: ./.github/workflows/docker-multiarch.yml
+    with:
+      dockerhub-username: ${{ inputs.dockerhub-username }}
+      ghcr-username: ${{ inputs.ghcr-username }}
+      repository: workbench
+      primary-tag: ${{ inputs.primary-tag }}
+      tags: ${{ inputs.tags }}
+      file: workbench/${{ inputs.template }}.Dockerfile
+      build-args: |
+        BASE_IMAGE=ghcr.io/${{ inputs.ghcr-username }}/sandbox:${{ inputs.primary-tag }}
+        USERNAME=${{ inputs.username }}
+      arches: ${{ inputs.arches }}
+    secrets: inherit

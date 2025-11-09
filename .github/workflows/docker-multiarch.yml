@@ -1,0 +1,145 @@
+name: Build and merge multi-arch Docker images
+
+on:
+  workflow_call:
+    inputs:
+      dockerhub-username:
+        type: string
+      ghcr-username:
+        type: string
+      repository:
+        type: string
+      primary-tag:
+        type: string
+      tags:
+        type: string
+      file:
+        type: string
+      build-args:
+        type: string
+      arches:
+        type: string
+
+concurrency:
+  group: ${{ github.workflow }}-${{ inputs.repository }}-${{ inputs.primary-tag }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    name: Set up ${{ inputs.repository }} build matrix - ${{ inputs.primary-tag }}
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - name: Set up build matrix
+        id: matrix
+        run: |
+          matrix_json='{"arch": []}'
+          for ARCH in $ARCHES; do
+            matrix_json="$(
+              echo "$matrix_json" |
+                jq --compact-output --arg arch "$ARCH" '.arch += [$arch]'
+            )"
+          done
+          echo "matrix=$matrix_json" >>"$GITHUB_OUTPUT"
+        env:
+          ARCHES: ${{ inputs.arches }}
+
+  build:
+    needs: setup
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
+    name: Build ${{ inputs.repository }} - ${{ inputs.primary-tag }} (${{ matrix.arch }})
+    runs-on: ${{ matrix.arch == 'aarch64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ inputs.dockerhub-username }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ inputs.ghcr-username }}
+          password: ${{ github.token }}
+      - name: Build and push Docker image by digest
+        id: build
+        uses: docker/build-push-action@v6
+        with:
+          file: ${{ inputs.file }}
+          platforms: linux/${{ matrix.arch }}
+          build-args: ${{ inputs.build-args }}
+          outputs: |
+            type=image,name=${{ inputs.dockerhub-username }}/${{ inputs.repository }},name-canonical=true,push=true,push-by-digest=true
+            type=image,name=ghcr.io/${{ inputs.ghcr-username }}/${{ inputs.repository }},name-canonical=true,push=true,push-by-digest=true
+      - name: Export digest
+        run: |
+          mkdir -p "$RUNNER_TEMP"/digests
+          echo "${DIGEST#sha256:}" >"$RUNNER_TEMP"/digests/"$REPOSITORY-$PRIMARY_TAG-$ARCH"
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          REPOSITORY: ${{ inputs.repository }}
+          PRIMARY_TAG: ${{ inputs.primary-tag }}
+          ARCH: ${{ matrix.arch }}
+      - name: Upload digest
+        uses: actions/upload-artifact@v5
+        with:
+          name: digests-${{ inputs.repository }}-${{ inputs.primary-tag }}-${{ matrix.arch }}
+          path: ${{ runner.temp }}/digests/*
+
+  merge:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Merge ${{ inputs.repository }} - ${{ inputs.primary-tag }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ inputs.dockerhub-username }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ inputs.ghcr-username }}
+          password: ${{ github.token }}
+      - name: Download digests
+        uses: actions/download-artifact@v6
+        with:
+          path: ${{ runner.temp }}/digests
+          pattern: digests-${{ inputs.repository }}-${{ inputs.primary-tag }}-*
+          merge-multiple: true
+      - name: Create manifest list and push
+        run: |
+          tags=()
+          for tag in $TAGS; do
+            tags+=(
+              "--tag=$DOCKERHUB_USERNAME/$REPOSITORY:$tag"
+              "--tag=ghcr.io/$GHCR_USERNAME/$REPOSITORY:$tag"
+            )
+          done
+
+          images=()
+          for digest in "$RUNNER_TEMP"/digests/"$REPOSITORY-$PRIMARY_TAG-"*; do
+            images+=("ghcr.io/$GHCR_USERNAME/$REPOSITORY@sha256:$(cat "$digest")")
+          done
+
+          docker buildx imagetools create "${tags[@]}" "${images[@]}"
+        env:
+          DOCKERHUB_USERNAME: ${{ inputs.dockerhub-username }}
+          GHCR_USERNAME: ${{ inputs.ghcr-username }}
+          REPOSITORY: ${{ inputs.repository }}
+          PRIMARY_TAG: ${{ inputs.primary-tag }}
+          TAGS: ${{ inputs.tags }}

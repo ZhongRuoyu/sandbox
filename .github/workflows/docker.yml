@@ -13,10 +13,130 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  sandbox:
-    uses: ./.github/workflows/sandbox.yml
-    secrets: inherit
-  workbench:
-    needs: sandbox
-    uses: ./.github/workflows/workbench.yml
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - primary-tag: trixie
+            tags: trixie debian-13 debian latest
+            template: debian
+            base-image: public.ecr.aws/docker/library/debian:trixie
+            arches: x86_64 aarch64
+          - primary-tag: bookworm
+            tags: bookworm debian-12
+            template: debian
+            base-image: public.ecr.aws/docker/library/debian:bookworm
+            arches: x86_64 aarch64
+          - primary-tag: bullseye
+            tags: bullseye debian-11
+            template: debian
+            base-image: public.ecr.aws/docker/library/debian:bullseye
+            arches: x86_64 aarch64
+          - primary-tag: sid
+            tags: sid debian-unstable
+            template: debian
+            base-image: public.ecr.aws/docker/library/debian:sid
+            arches: x86_64 aarch64
+          - primary-tag: debian-testing
+            tags: debian-testing
+            template: debian
+            base-image: public.ecr.aws/docker/library/debian:testing
+            arches: x86_64 aarch64
+          - primary-tag: noble
+            tags: noble ubuntu-24.04 ubuntu
+            template: ubuntu
+            base-image: public.ecr.aws/docker/library/ubuntu:noble
+            arches: x86_64 aarch64
+          - primary-tag: jammy
+            tags: jammy ubuntu-22.04
+            template: ubuntu
+            base-image: public.ecr.aws/docker/library/ubuntu:jammy
+            arches: x86_64 aarch64
+          - primary-tag: focal
+            tags: focal ubuntu-20.04
+            template: ubuntu
+            base-image: public.ecr.aws/docker/library/ubuntu:focal
+            arches: x86_64 aarch64
+          - primary-tag: ubuntu-rolling
+            tags: ubuntu-rolling
+            template: ubuntu
+            base-image: public.ecr.aws/docker/library/ubuntu:rolling
+            arches: x86_64 aarch64
+          - primary-tag: ubuntu-devel
+            tags: ubuntu-devel
+            template: ubuntu
+            base-image: public.ecr.aws/docker/library/ubuntu:devel
+            arches: x86_64 aarch64
+          - primary-tag: fedora-latest
+            tags: fedora-latest fedora
+            template: fedora
+            base-image: public.ecr.aws/docker/library/fedora:latest
+            arches: x86_64 aarch64
+          - primary-tag: fedora-rawhide
+            tags: fedora-rawhide rawhide
+            template: fedora
+            base-image: public.ecr.aws/docker/library/fedora:rawhide
+            arches: x86_64 aarch64
+          - primary-tag: almalinux-10
+            tags: almalinux-10 almalinux
+            template: almalinux
+            base-image: public.ecr.aws/docker/library/almalinux:10
+            arches: x86_64 aarch64
+          - primary-tag: almalinux-9
+            tags: almalinux-9
+            template: almalinux
+            base-image: public.ecr.aws/docker/library/almalinux:9
+            arches: x86_64 aarch64
+          - primary-tag: almalinux-8
+            tags: almalinux-8
+            template: almalinux
+            base-image: public.ecr.aws/docker/library/almalinux:8
+            arches: x86_64 aarch64
+          - primary-tag: rockylinux-10
+            tags: rockylinux-10 rockylinux
+            template: rockylinux
+            base-image: rockylinux/rockylinux:10
+            arches: x86_64 aarch64
+          - primary-tag: rockylinux-9
+            tags: rockylinux-9
+            template: rockylinux
+            base-image: rockylinux/rockylinux:9
+            arches: x86_64 aarch64
+          - primary-tag: rockylinux-8
+            tags: rockylinux-8
+            template: rockylinux
+            base-image: rockylinux/rockylinux:8
+            arches: x86_64 aarch64
+          - primary-tag: archlinux
+            tags: archlinux
+            template: archlinux
+            base-image: public.ecr.aws/docker/library/archlinux:latest
+            arches: x86_64
+          - primary-tag: opensuse-tumbleweed
+            tags: opensuse-tumbleweed opensuse
+            template: opensuse
+            base-image: registry.opensuse.org/opensuse/tumbleweed:latest
+            arches: x86_64 aarch64
+          - primary-tag: opensuse-leap-15
+            tags: opensuse-leap-15 opensuse-leap
+            template: opensuse
+            base-image: registry.opensuse.org/opensuse/leap:15
+            arches: x86_64 aarch64
+          - primary-tag: alpine
+            tags: alpine
+            template: alpine
+            base-image: public.ecr.aws/docker/library/alpine:latest
+            arches: x86_64 aarch64
+    name: Build - ${{ matrix.primary-tag }}
+    uses: ./.github/workflows/docker-build.yml
+    with:
+      dockerhub-username: zhongruoyu
+      ghcr-username: zhongruoyu
+      username: ruoyu
+      primary-tag: ${{ matrix.primary-tag }}
+      tags: ${{ matrix.tags }}
+      template: ${{ matrix.template }}
+      base-image: ${{ matrix.base-image }}
+      arches: ${{ matrix.arches }}
     secrets: inherit
