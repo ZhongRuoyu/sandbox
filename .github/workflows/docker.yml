@@ -33,15 +33,15 @@ jobs:
             template: debian
             base-image: public.ecr.aws/docker/library/debian:bullseye
             arches: x86_64 aarch64
-          - primary-tag: sid
-            tags: sid debian-unstable
-            template: debian
-            base-image: public.ecr.aws/docker/library/debian:sid
-            arches: x86_64 aarch64
           - primary-tag: debian-testing
             tags: debian-testing
             template: debian
             base-image: public.ecr.aws/docker/library/debian:testing
+            arches: x86_64 aarch64
+          - primary-tag: sid
+            tags: sid debian-unstable
+            template: debian
+            base-image: public.ecr.aws/docker/library/debian:sid
             arches: x86_64 aarch64
           - primary-tag: noble
             tags: noble ubuntu-24.04 ubuntu
