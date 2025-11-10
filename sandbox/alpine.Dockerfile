@@ -20,7 +20,7 @@ RUN <<-"EOF"
     gnupg openssl \
     openssh \
     bind-tools iputils net-tools whois \
-    apache2-utils ca-certificates curl wget \
+    ca-certificates curl wget \
     file gawk jq tree unzip zip \
     less vim \
     bash htop moreutils sudo tmux zsh \

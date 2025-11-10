@@ -21,7 +21,7 @@ RUN <<-"EOF"
     gnupg openssl \
     openssh-client openssh-server \
     bind9-dnsutils iputils-ping iputils-tracepath net-tools whois \
-    apache2-utils ca-certificates curl wget \
+    ca-certificates curl wget \
     file gawk jq tree unzip zip \
     less vim \
     bash htop moreutils sudo tmux zsh \
