@@ -8,7 +8,6 @@ RUN <<-"EOF"
   sed -Ei 's/^(NoExtract\s*=.*)$/# \1/g' /etc/pacman.conf
   pacman -Syu --needed --noconfirm \
     man-db man-pages \
-    texinfo \
     base-devel \
     gcc \
     binutils gdb patchelf \

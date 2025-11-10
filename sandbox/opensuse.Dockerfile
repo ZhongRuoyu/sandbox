@@ -10,7 +10,6 @@ RUN <<-"EOF"
   zypper install -y --no-recommends \
     patterns-base-base \
     man man-pages \
-    info texinfo \
     patterns-devel-base-devel_basis \
     patterns-devel-C-C++-devel_C_C++ \
     gcc gcc-c++ \

@@ -10,7 +10,6 @@ RUN <<-"EOF"
   dnf install -y \
     @server-product-environment \
     man-db man-pages \
-    info texinfo \
     @development-tools \
     @c-development \
     gcc gcc-c++ \

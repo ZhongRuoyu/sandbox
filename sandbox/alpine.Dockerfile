@@ -9,7 +9,6 @@ RUN <<-"EOF"
   apk add --no-cache \
     bash coreutils \
     man-db man-pages man-pages-posix \
-    texinfo \
     alpine-sdk \
     gcc g++ \
     binutils gdb patchelf \

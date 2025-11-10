@@ -23,7 +23,6 @@ RUN <<-"EOF"
   dnf install -y --skip-broken \
     @server-product-environment \
     man-db man-pages \
-    info \
     @development \
     gcc gcc-c++ \
     binutils gdb patchelf \
