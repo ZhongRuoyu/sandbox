@@ -33,6 +33,11 @@ jobs:
             template: debian
             base-image: public.ecr.aws/docker/library/debian:bullseye
             arches: x86_64 aarch64
+          - primary-tag: resolute
+            tags: resolute ubuntu-26.04 ubuntu
+            template: ubuntu
+            base-image: public.ecr.aws/docker/library/ubuntu:resolute
+            arches: x86_64 aarch64
           - primary-tag: noble
             tags: noble ubuntu-24.04 ubuntu
             template: ubuntu
