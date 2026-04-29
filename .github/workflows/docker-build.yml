@@ -19,6 +19,8 @@ on:
         type: string
       arches:
         type: string
+      push:
+        type: boolean
 
 concurrency:
   group: ${{ github.workflow }}-${{ inputs.primary-tag }}-${{ github.ref }}
@@ -38,6 +40,7 @@ jobs:
       build-args: |
         BASE_IMAGE=${{ inputs.base-image }}
       arches: ${{ inputs.arches }}
+      push: ${{ inputs.push }}
     secrets: inherit
 
   workbench:
@@ -55,4 +58,5 @@ jobs:
         BASE_IMAGE=ghcr.io/${{ inputs.ghcr-username }}/sandbox:${{ inputs.primary-tag }}
         USERNAME=${{ inputs.username }}
       arches: ${{ inputs.arches }}
+      push: ${{ inputs.push }}
     secrets: inherit

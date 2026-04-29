@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   schedule:
     - cron: "0 0 * * 0"
 
@@ -134,4 +137,5 @@ jobs:
       template: ${{ matrix.template }}
       base-image: ${{ matrix.base-image }}
       arches: ${{ matrix.arches }}
+      push: ${{ github.ref_name == 'main' }}
     secrets: inherit

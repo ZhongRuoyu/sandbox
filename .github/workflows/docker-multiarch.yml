@@ -61,16 +61,35 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4.0.0
       - name: Login to Docker Hub
+        if: inputs.push
         uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
         with:
           username: ${{ inputs.dockerhub-username }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Login to GitHub Container Registry
+        if: inputs.push
         uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
         with:
           registry: ghcr.io
           username: ${{ inputs.ghcr-username }}
           password: ${{ github.token }}
+      - name: Set up build
+        id: setup
+        run: |
+          {
+            if [[ "$PUSH" = true ]]; then
+              echo "outputs<<OUTPUTS"
+              echo "type=image,name=$DOCKERHUB_REPOSITORY,name-canonical=true,push=true,push-by-digest=true"
+              echo "type=image,name=$GHCR_REPOSITORY,name-canonical=true,push=true,push-by-digest=true"
+              echo "OUTPUTS"
+            else
+              echo "outputs="
+            fi
+          } >> "$GITHUB_OUTPUT"
+        env:
+          PUSH: ${{ inputs.push }}
+          DOCKERHUB_REPOSITORY: ${{ inputs.dockerhub-username }}/${{ inputs.repository }}
+          GHCR_REPOSITORY: ghcr.io/${{ inputs.ghcr-username }}/${{ inputs.repository }}
       - name: Build and push Docker image by digest
         id: build
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7.1.0
@@ -78,9 +97,7 @@ jobs:
           file: ${{ inputs.file }}
           platforms: linux/${{ matrix.arch }}
           build-args: ${{ inputs.build-args }}
-          outputs: |
-            type=image,name=${{ inputs.dockerhub-username }}/${{ inputs.repository }},name-canonical=true,push=true,push-by-digest=true
-            type=image,name=ghcr.io/${{ inputs.ghcr-username }}/${{ inputs.repository }},name-canonical=true,push=true,push-by-digest=true
+          outputs: ${{ steps.setup.outputs.outputs }}
       - name: Export digest
         run: |
           mkdir -p "$RUNNER_TEMP"/digests
@@ -97,6 +114,7 @@ jobs:
           path: ${{ runner.temp }}/digests/*
 
   merge:
+    if: inputs.push
     needs: build
     runs-on: ubuntu-latest
     name: Merge ${{ inputs.repository }} - ${{ inputs.primary-tag }}
