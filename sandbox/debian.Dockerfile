@@ -15,8 +15,8 @@ RUN <<-"EOF"
     git \
     cmake make \
     clang clang-format clang-tidy clang-tools clangd libc++-dev libc++1 \
-      libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev lld lldb \
-      llvm llvm-dev llvm-runtime \
+      libc++abi-dev libc++abi1 libclang-dev liblldb-dev lld lldb llvm llvm-dev \
+      llvm-runtime \
     python3 python3-pip python-is-python3 \
     gnupg openssl \
     openssh-client openssh-server \
