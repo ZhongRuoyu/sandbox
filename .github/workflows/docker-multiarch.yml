@@ -26,13 +26,29 @@ concurrency:
   group: ${{ github.workflow }}-${{ inputs.repository }}-${{ inputs.primary-tag }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  DOCKERHUB_REPOSITORY: ${{ inputs.dockerhub-username }}/${{ inputs.repository }}
+  GHCR_REPOSITORY: ghcr.io/${{ inputs.ghcr-username }}/${{ inputs.repository }}
+
 jobs:
   setup:
-    name: Set up ${{ inputs.repository }} build matrix - ${{ inputs.primary-tag }}
+    name: Set up ${{ inputs.repository }} build - ${{ inputs.primary-tag }}
     runs-on: ubuntu-latest
     outputs:
+      tags: ${{ steps.metadata.outputs.tags }}
+      labels: ${{ steps.metadata.outputs.labels }}
       matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
+      - name: Determine Docker image metadata
+        id: metadata
+        uses: docker/metadata-action@030e881283bb7a6894de51c315a6bfe6a94e05cf # v6.0.0
+        with:
+          images: |
+            ${{ env.DOCKERHUB_REPOSITORY }}
+            ${{ env.GHCR_REPOSITORY }}
+          flavor: |
+            latest=false
+          tags: ${{ inputs.tags }}
       - name: Set up build matrix
         id: matrix
         run: |
@@ -88,14 +104,13 @@ jobs:
           } >> "$GITHUB_OUTPUT"
         env:
           PUSH: ${{ inputs.push }}
-          DOCKERHUB_REPOSITORY: ${{ inputs.dockerhub-username }}/${{ inputs.repository }}
-          GHCR_REPOSITORY: ghcr.io/${{ inputs.ghcr-username }}/${{ inputs.repository }}
       - name: Build and push Docker image by digest
         id: build
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7.1.0
         with:
           file: ${{ inputs.file }}
           platforms: linux/${{ matrix.arch }}
+          labels: ${{ needs.setup.outputs.labels }}
           build-args: ${{ inputs.build-args }}
           outputs: ${{ steps.setup.outputs.outputs }}
       - name: Export digest
@@ -115,7 +130,7 @@ jobs:
 
   merge:
     if: inputs.push
-    needs: build
+    needs: [setup, build]
     runs-on: ubuntu-latest
     name: Merge ${{ inputs.repository }} - ${{ inputs.primary-tag }}
     permissions:
@@ -143,23 +158,20 @@ jobs:
           merge-multiple: true
       - name: Create manifest list and push
         run: |
-          tags=()
-          for tag in $TAGS; do
-            tags+=(
-              "--tag=$DOCKERHUB_USERNAME/$REPOSITORY:$tag"
-              "--tag=ghcr.io/$GHCR_USERNAME/$REPOSITORY:$tag"
-            )
+          mapfile -t tags <<< "$TAGS"
+          tag_args=()
+          for tag in "${tags[@]}"; do
+            tag_args+=(--tag="$tag")
           done
-
           images=()
-          for digest in "$RUNNER_TEMP"/digests/"$REPOSITORY-$PRIMARY_TAG-"*; do
-            images+=("ghcr.io/$GHCR_USERNAME/$REPOSITORY@sha256:$(cat "$digest")")
+          for ARCH in $ARCHES; do
+            images+=("ghcr.io/$GHCR_USERNAME/$REPOSITORY@sha256:$(cat "$RUNNER_TEMP"/digests/"$REPOSITORY-$PRIMARY_TAG-$ARCH")")
           done
-
-          docker buildx imagetools create "${tags[@]}" "${images[@]}"
+          docker buildx imagetools create "${tag_args[@]}" "${images[@]}"
         env:
           DOCKERHUB_USERNAME: ${{ inputs.dockerhub-username }}
           GHCR_USERNAME: ${{ inputs.ghcr-username }}
           REPOSITORY: ${{ inputs.repository }}
           PRIMARY_TAG: ${{ inputs.primary-tag }}
-          TAGS: ${{ inputs.tags }}
+          ARCHES: ${{ inputs.arches }}
+          TAGS: ${{ needs.setup.outputs.tags }}
