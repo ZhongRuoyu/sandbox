@@ -186,5 +186,5 @@ jobs:
       template: ${{ matrix.template }}
       base-image: ${{ matrix.base-image }}
       arches: ${{ matrix.arches }}
-      push: ${{ github.ref_name == 'main' }}
+      push: ${{ github.ref == 'refs/heads/main' }}
     secrets: inherit
