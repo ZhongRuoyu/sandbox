@@ -69,7 +69,6 @@ jobs:
             tags: |
               noble
               ubuntu-24.04
-              ubuntu
             template: ubuntu
             base-image: public.ecr.aws/docker/library/ubuntu:noble
             arches: x86_64 aarch64
