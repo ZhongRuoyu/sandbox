@@ -26,6 +26,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ inputs.repository }}-${{ inputs.primary-tag }}-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash -euxo pipefail {0}
+
 env:
   DOCKERHUB_REPOSITORY: ${{ inputs.dockerhub-username }}/${{ inputs.repository }}
   GHCR_REPOSITORY: ghcr.io/${{ inputs.ghcr-username }}/${{ inputs.repository }}
