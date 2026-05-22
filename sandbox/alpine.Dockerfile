@@ -4,7 +4,7 @@ ARG BASE_IMAGE
 FROM "${BASE_IMAGE}"
 
 RUN <<-"EOF"
-  set -e
+  set -eux
   apk upgrade --no-cache
   apk add --no-cache \
     bash coreutils \

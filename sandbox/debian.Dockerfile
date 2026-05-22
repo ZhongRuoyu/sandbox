@@ -4,7 +4,7 @@ ARG BASE_IMAGE
 FROM "${BASE_IMAGE}"
 
 RUN <<-"EOF"
-  set -e
+  set -eux
   apt-get update
   apt-get upgrade -y
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \

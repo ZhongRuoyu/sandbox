@@ -4,7 +4,7 @@ ARG BASE_IMAGE
 FROM "${BASE_IMAGE}"
 
 RUN <<-"EOF"
-  set -e
+  set -eux
   sed -Ei 's/^(NoExtract\s*=.*)$/# \1/g' /etc/pacman.conf
   pacman -Syu --needed --noconfirm \
     man-db man-pages \

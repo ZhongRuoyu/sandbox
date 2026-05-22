@@ -4,7 +4,7 @@ ARG BASE_IMAGE
 FROM "${BASE_IMAGE}"
 
 RUN <<-"EOF"
-  set -e
+  set -eux
   dnf upgrade -y
   case "$(
     source /etc/os-release

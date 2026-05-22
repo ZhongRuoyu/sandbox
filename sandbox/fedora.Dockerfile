@@ -4,7 +4,7 @@ ARG BASE_IMAGE
 FROM "${BASE_IMAGE}"
 
 RUN <<-"EOF"
-  set -e
+  set -eux
   sed -Ei 's/^(tsflags\s*=.*)$/# \1/g' /etc/dnf/dnf.conf
   dnf upgrade -y
   dnf install -y \

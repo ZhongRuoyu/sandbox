@@ -5,7 +5,7 @@ FROM "${BASE_IMAGE}"
 
 ARG USERNAME
 RUN <<-"EOF"
-  set -e
+  set -eux
   ssh-keygen -A
   if getent passwd ubuntu; then
     userdel -r ubuntu
@@ -22,7 +22,7 @@ WORKDIR "/home/${USERNAME}"
 CMD [ "zsh", "-il" ]
 
 RUN <<-"EOF"
-  set -e
+  set -eux
   git clone https://github.com/ZhongRuoyu/dotfiles.git ~/.local/share/dotfiles
   ~/.local/share/dotfiles/install.sh
 EOF

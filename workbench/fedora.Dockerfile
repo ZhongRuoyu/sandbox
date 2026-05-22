@@ -5,7 +5,7 @@ FROM "${BASE_IMAGE}"
 
 ARG USERNAME
 RUN <<-"EOF"
-  set -e
+  set -eux
   ssh-keygen -A
   groupadd -g 1000 "${USERNAME}"
   useradd -d "/home/${USERNAME}" -g "${USERNAME}" -m -s /bin/zsh -u 1000 "${USERNAME}"
@@ -16,7 +16,7 @@ WORKDIR "/home/${USERNAME}"
 CMD [ "zsh", "-il" ]
 
 RUN <<-"EOF"
-  set -e
+  set -eux
   git clone https://github.com/ZhongRuoyu/dotfiles.git ~/.local/share/dotfiles
   ~/.local/share/dotfiles/install.sh
 EOF

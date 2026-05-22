@@ -4,7 +4,7 @@ ARG BASE_IMAGE
 FROM "${BASE_IMAGE}"
 
 RUN <<-"EOF"
-  set -e
+  set -eux
   apt-get update
   command -v unminimize || apt-get install -y --no-install-recommends unminimize
   yes | unminimize
