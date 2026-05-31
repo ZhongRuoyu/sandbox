@@ -1,4 +1,4 @@
-name: Build and publish sandbox and workbench Docker images
+name: Docker build
 
 on:
   workflow_call:
@@ -21,15 +21,25 @@ on:
         type: string
       push:
         type: boolean
+    secrets:
+      DOCKERHUB_TOKEN:
+        required: true
 
-concurrency:
-  group: ${{ github.workflow }}-${{ inputs.primary-tag }}-${{ github.ref }}
-  cancel-in-progress: true
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -euxo pipefail {0}
 
 jobs:
   sandbox:
-    name: Build sandbox - ${{ inputs.primary-tag }}
-    uses: ./.github/workflows/docker-multiarch.yml
+    name: Build sandbox image
+    uses: ./.github/workflows/docker-build-multiarch.yml
+    secrets:
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    permissions:
+      contents: read
+      packages: write # for pushing image
     with:
       dockerhub-username: ${{ inputs.dockerhub-username }}
       ghcr-username: ${{ inputs.ghcr-username }}
@@ -41,12 +51,16 @@ jobs:
         BASE_IMAGE=${{ inputs.base-image }}
       arches: ${{ inputs.arches }}
       push: ${{ inputs.push }}
-    secrets: inherit
 
   workbench:
-    name: Build workbench - ${{ inputs.primary-tag }}
+    name: Build workbench image
     needs: sandbox
-    uses: ./.github/workflows/docker-multiarch.yml
+    uses: ./.github/workflows/docker-build-multiarch.yml
+    secrets:
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    permissions:
+      contents: read
+      packages: write # for pushing image
     with:
       dockerhub-username: ${{ inputs.dockerhub-username }}
       ghcr-username: ${{ inputs.ghcr-username }}
@@ -59,4 +73,3 @@ jobs:
         USERNAME=${{ inputs.username }}
       arches: ${{ inputs.arches }}
       push: ${{ inputs.push }}
-    secrets: inherit

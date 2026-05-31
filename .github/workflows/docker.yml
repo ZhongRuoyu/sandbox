@@ -1,4 +1,4 @@
-name: Build and publish Docker images
+name: Docker
 
 on:
   workflow_dispatch:
@@ -14,6 +14,12 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -euxo pipefail {0}
 
 jobs:
   build:
@@ -177,6 +183,11 @@ jobs:
             arches: x86_64 aarch64
     name: Build - ${{ matrix.primary-tag }}
     uses: ./.github/workflows/docker-build.yml
+    secrets:
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    permissions:
+      contents: read
+      packages: write # for pushing image
     with:
       dockerhub-username: zhongruoyu
       ghcr-username: zhongruoyu
@@ -187,4 +198,3 @@ jobs:
       base-image: ${{ matrix.base-image }}
       arches: ${{ matrix.arches }}
       push: ${{ github.ref == 'refs/heads/main' }}
-    secrets: inherit
