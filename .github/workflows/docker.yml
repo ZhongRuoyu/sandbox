@@ -43,13 +43,6 @@ jobs:
             template: debian
             base-image: public.ecr.aws/docker/library/debian:bookworm
             arches: x86_64 aarch64
-          - primary-tag: bullseye
-            tags: |
-              bullseye
-              debian-11
-            template: debian
-            base-image: public.ecr.aws/docker/library/debian:bullseye
-            arches: x86_64 aarch64
           - primary-tag: debian-testing
             tags: |
               debian-testing
