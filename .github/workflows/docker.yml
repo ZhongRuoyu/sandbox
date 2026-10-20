@@ -34,27 +34,27 @@ jobs:
               debian
               latest
             template: debian
-            base-image: public.ecr.aws/docker/library/debian:trixie
+            base-image: debian:trixie
             arches: x86_64 aarch64
           - primary-tag: bookworm
             tags: |
               bookworm
               debian-12
             template: debian
-            base-image: public.ecr.aws/docker/library/debian:bookworm
+            base-image: debian:bookworm
             arches: x86_64 aarch64
           - primary-tag: debian-testing
             tags: |
               debian-testing
             template: debian
-            base-image: public.ecr.aws/docker/library/debian:testing
+            base-image: debian:testing
             arches: x86_64 aarch64
           - primary-tag: sid
             tags: |
               sid
               debian-unstable
             template: debian
-            base-image: public.ecr.aws/docker/library/debian:sid
+            base-image: debian:sid
             arches: x86_64 aarch64
           - primary-tag: resolute
             tags: |
@@ -62,73 +62,73 @@ jobs:
               ubuntu-26.04
               ubuntu
             template: ubuntu
-            base-image: public.ecr.aws/docker/library/ubuntu:resolute
+            base-image: ubuntu:resolute
             arches: x86_64 aarch64
           - primary-tag: noble
             tags: |
               noble
               ubuntu-24.04
             template: ubuntu
-            base-image: public.ecr.aws/docker/library/ubuntu:noble
+            base-image: ubuntu:noble
             arches: x86_64 aarch64
           - primary-tag: jammy
             tags: |
               jammy
               ubuntu-22.04
             template: ubuntu
-            base-image: public.ecr.aws/docker/library/ubuntu:jammy
+            base-image: ubuntu:jammy
             arches: x86_64 aarch64
           - primary-tag: focal
             tags: |
               focal
               ubuntu-20.04
             template: ubuntu
-            base-image: public.ecr.aws/docker/library/ubuntu:focal
+            base-image: ubuntu:focal
             arches: x86_64 aarch64
           - primary-tag: ubuntu-rolling
             tags: |
               ubuntu-rolling
             template: ubuntu
-            base-image: public.ecr.aws/docker/library/ubuntu:rolling
+            base-image: ubuntu:rolling
             arches: x86_64 aarch64
           - primary-tag: ubuntu-devel
             tags: |
               ubuntu-devel
             template: ubuntu
-            base-image: public.ecr.aws/docker/library/ubuntu:devel
+            base-image: ubuntu:devel
             arches: x86_64 aarch64
           - primary-tag: fedora-latest
             tags: |
               fedora-latest
               fedora
             template: fedora
-            base-image: public.ecr.aws/docker/library/fedora:latest
+            base-image: fedora:latest
             arches: x86_64 aarch64
           - primary-tag: fedora-rawhide
             tags: |
               fedora-rawhide
               rawhide
             template: fedora
-            base-image: public.ecr.aws/docker/library/fedora:rawhide
+            base-image: fedora:rawhide
             arches: x86_64 aarch64
           - primary-tag: almalinux-10
             tags: |
               almalinux-10
               almalinux
             template: almalinux
-            base-image: public.ecr.aws/docker/library/almalinux:10
+            base-image: almalinux:10
             arches: x86_64 aarch64
           - primary-tag: almalinux-9
             tags: |
               almalinux-9
             template: almalinux
-            base-image: public.ecr.aws/docker/library/almalinux:9
+            base-image: almalinux:9
             arches: x86_64 aarch64
           - primary-tag: almalinux-8
             tags: |
               almalinux-8
             template: almalinux
-            base-image: public.ecr.aws/docker/library/almalinux:8
+            base-image: almalinux:8
             arches: x86_64 aarch64
           - primary-tag: rockylinux-10
             tags: |
@@ -153,7 +153,7 @@ jobs:
             tags: |
               archlinux
             template: archlinux
-            base-image: public.ecr.aws/docker/library/archlinux:latest
+            base-image: archlinux:latest
             arches: x86_64
           - primary-tag: opensuse-tumbleweed
             tags: |
@@ -172,7 +172,7 @@ jobs:
             tags: |
               alpine
             template: alpine
-            base-image: public.ecr.aws/docker/library/alpine:latest
+            base-image: alpine:latest
             arches: x86_64 aarch64
     name: Build - ${{ matrix.primary-tag }}
     uses: ./.github/workflows/docker-build.yml
